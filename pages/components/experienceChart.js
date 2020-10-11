@@ -10,11 +10,12 @@ class ExperienceChart extends PureComponent {
     super(props);
     this.data = props.data;
     this.height = props.height;
+    this.minHeight = props.minHeight;
   }
 
   render() {
     return (
-      <ResponsiveContainer width = "99%" height = {this.height}>
+      <ResponsiveContainer width = "99%" height = {this.height} minHeight = {this.minHeight}>
         <AreaChart
           data={this.data}
           margin={{
