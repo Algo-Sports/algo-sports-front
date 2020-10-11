@@ -8,7 +8,7 @@ import {
   TrophyOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-
+import { Scrollbars } from 'react-custom-scrollbars';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -44,6 +44,7 @@ class SiderLayout extends Component {
 
   render() {
     return (
+      
       <Layout style={{ minHeight: '100vh' }}>
         <Sider className={styles.leftSideNav} collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
           <div className={styles.logo} onClick  = {() => this.props.router.push('/')}/>
@@ -75,13 +76,16 @@ class SiderLayout extends Component {
             </Breadcrumb>
           </Header>
           <Content className={styles.content}>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              {this.props.children}
-            </div>
+            <Scrollbars style={{minHeight: 500}}>
+              <div style={{padding: 10}}>
+                {this.props.children}
+              </div>
+            </Scrollbars>
           </Content>
-    <Footer className={styles.footer}> Algo sports ©2020 Created by KMU Algo Sports</Footer>
+        <Footer className={styles.footer}> Algo sports ©2020 Created by KMU Algo Sports</Footer>
         </Layout>
       </Layout>
+
     )
   }
 }
