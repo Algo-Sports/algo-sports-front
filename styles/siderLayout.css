@@ -1,0 +1,12 @@
+.ant-layout-sider-trigger {
+  background: rgb(44, 52, 80);
+}
+
+.ant-menu-sub.ant-menu-inline {
+    background: #2C3450;
+    color: white;
+  }
+
+.track-horizontal {
+  display: none;
+}
