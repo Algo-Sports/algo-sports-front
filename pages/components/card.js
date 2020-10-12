@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import styles from '../../styles/card.module.css'
 class Card extends Component {
     constructor(props) {
         super(props);
@@ -7,7 +7,7 @@ class Card extends Component {
 
     render() {
         return(
-            <div style = {{background: "#1F263B", borderRadius: 20, margin: 5, padding: 5}}>
+            <div className = {styles.card}>
                 {this.props.children}
             </div>
 

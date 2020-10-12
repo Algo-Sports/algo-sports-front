@@ -4,6 +4,7 @@ import {Row, Col} from 'antd'
 import ExperienceChart from '../pages/components/experienceChart';
 import WinningRateChart from '../pages/components/winningRateChart';
 import Card from '../pages/components/card';
+import styles from '../styles/profile.module.css';
 
 class Profile extends Component {
   constructor(props) {
@@ -37,43 +38,43 @@ class Profile extends Component {
 
     this.winningRateData = [
       {
-        gamename: '총쏘기 게임', A: 56.5,
+        gamename: '총쏘기 게임', rate: 56.5,
       },
       {
-        gamename: '땅따먹기 게임 1', A: 98,
+        gamename: '땅따먹기 게임 1', rate: 50,
       },
       {
-        gamename: '땅따먹기 게임 2', A: 86,
+        gamename: '땅따먹기 게임 2', rate: 86,
       },
       {
-        gamename: '총쏘기 게임 2', A: 99,
+        gamename: '총쏘기 게임 2', rate: 65,
       },
       {
-        gamename: '풍선 터뜨리기', A: 85,
+        gamename: '풍선 터뜨리기', rate: 85,
       },
       {
-        gamename: '길찾기', A: 65,
+        gamename: '길찾기', rate: 65,
       },
     ];
 
     this.losingRateData = [
       {
-        gamename: '총쏘기 게임', A: 56.5,
+        gamename: '총쏘기 게임', rate: 44.5,
       },
       {
-        gamename: '땅따먹기 게임 1', A: 98,
+        gamename: '땅따먹기 게임 1', rate: 50,
       },
       {
-        gamename: '땅따먹기 게임 2', A: 86,
+        gamename: '땅따먹기 게임 2', rate: 14,
       },
       {
-        gamename: '총쏘기 게임 2', A: 99,
+        gamename: '총쏘기 게임 2', rate:35,
       },
       {
-        gamename: '풍선 터뜨리기', A: 85,
+        gamename: '풍선 터뜨리기', rate: 15,
       },
       {
-        gamename: '길찾기', A: 65,
+        gamename: '길찾기', rate: 35,
       },
     ];
   }
@@ -82,33 +83,32 @@ class Profile extends Component {
     return (
       <BaseLayout>
         <Row gutter = {8} style={{paddingTop: 20 }}>
-          <Col xs = {24} md = {24} lg = {8}>
+          <Col xs = {24} md = {24} lg = {4}>
             <Card>
-              <div style = {{width : 150, height: 150, backgroundColor:"white", margin:"auto auto auto auto", borderRadius : 75}}>
-              </div>
+              <div className = {styles.avatar}/>
               <h2 style = {{textAlign:"center"}}>
                 username
               </h2>
             </Card>
           </Col>
-          <Col xs = {24} md = {24} lg = {16}>
+          <Col xs = {24} md = {24} lg = {20}>
             <Row>
               <Col xs = {24} md = {24} lg = {24}>
                 <Card>
                   <h2>
                     Chart
-                  </h2>
+                  </h2> 
                   <ExperienceChart data = {this.experienceData} height = {300}/>
                 </Card>
               </Col>
               <Col xs = {24} md = {12} lg = {12}>
                 <Card>
-                  <WinningRateChart data = {this.winningRateData} height = {300} minHeight = {300}/>
+                  <WinningRateChart data = {this.winningRateData} dataKey = {"rate"} height = {300} minHeight = {300} fillColor = {"#7095FF"}/>
                 </Card>
               </Col>
               <Col xs = {24} md = {12} lg = {12}>
                 <Card>
-                  <WinningRateChart data = {this.losingRateData} height = {300} minHeight = {300}/>
+                  <WinningRateChart data = {this.losingRateData} dataKey = {"rate"} height = {300} minHeight = {300} fillColor = {"#FF7070"}/>
                 </Card>
               </Col>
             </Row>

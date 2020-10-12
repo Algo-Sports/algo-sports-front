@@ -1,14 +1,15 @@
 import React, { PureComponent } from 'react';
 import {
-  Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,ResponsiveContainer, Tooltip
+  Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,ResponsiveContainer, Tooltip, Label
 } from 'recharts';
-
 
 class WinningRateChart extends PureComponent {
   constructor(props) {
     super(props);
     this.data = props.data;
     this.height = props.height;
+    this.dateKey = props.dataKey;
+    this.fillColor = props.fillColor;
   }
 
   render() {
@@ -23,7 +24,8 @@ class WinningRateChart extends PureComponent {
           <PolarAngleAxis dataKey="gamename"/>
           <PolarRadiusAxis />
           <Tooltip />
-          <Radar dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+          <Label dataKey = "gamename" style = {{color: "white"}}/>
+          <Radar dataKey={this.dateKey} stroke="#1F263B" fill={this.fillColor} fillOpacity={0.6} />
         </RadarChart>
       </ResponsiveContainer>
     );
