@@ -6,4 +6,7 @@
     background: #2C3450;
     color: white;
   }
-  
+
+.track-horizontal {
+  display: none;
+}

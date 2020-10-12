@@ -1,23 +1,14 @@
 import React, { Component } from 'react';
 import styles from '../../styles/siderLayout.module.css'
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Breadcrumb } from 'antd';
 import { withRouter } from 'next/router'
-import {
-  DotChartOutlined,
-  RiseOutlined,
-  TrophyOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
 import { Scrollbars } from 'react-custom-scrollbars';
+import LeftNavBar from '../components/leftNavBar';
 
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+const { Header, Content, Footer} = Layout;
 
 class SiderLayout extends Component {
   
-  state = {
-    collapsed: false,
-  };
 
   capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -37,38 +28,13 @@ class SiderLayout extends Component {
     })
   }
 
-  onCollapse = collapsed => {
-    this.setState({ collapsed });
-  };
-
+  
 
   render() {
     return (
       
       <Layout style={{ minHeight: '100vh' }}>
-        <Sider className={styles.leftSideNav} collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-          <div className={styles.logo} onClick  = {() => this.props.router.push('/')}/>
-          <Menu className={styles.leftSideNavMenu} mode="inline">
-            <Menu.Item className={styles.leftSideNavMenuItem} key="1" icon={<UserOutlined />} onClick  = {() => this.props.router.push('/profile')}>
-              username
-            </Menu.Item>
-            <SubMenu className={styles.leftSideNavSubMenu} key="GameOption" icon={<DotChartOutlined />} title="Game">
-              <Menu.Item className={styles.leftSideNavSubMenuItem} key="gameList" onClick  = {() => this.props.router.push('/gamelist')}>
-                Game List
-              </Menu.Item>
-              <Menu.Item className={styles.leftSideNavSubMenuItem} key="createGame" onClick  = {() => this.props.router.push('/createGame')}>
-                Create Game
-              </Menu.Item>
-            </SubMenu>
-            <Menu.Item className={styles.leftSideNavMenuItem} key="2" icon={<RiseOutlined />} onClick  = {() => this.props.router.push('/ranking')}>
-              Ranking
-            </Menu.Item>
-            <Menu.Item className={styles.leftSideNavMenuItem} key="3" icon={<TrophyOutlined />} onClick  = {() => this.props.router.push('/award')}>
-              Award
-            </Menu.Item>
-
-          </Menu>
-        </Sider>
+        <LeftNavBar/>
         <Layout className={styles.siteLayout}>
           <Header className={styles.topNav}>
             <Breadcrumb className={styles.breadcrumb} separator=">">
@@ -76,7 +42,7 @@ class SiderLayout extends Component {
             </Breadcrumb>
           </Header>
           <Content className={styles.content}>
-            <Scrollbars style={{minHeight: 500}}>
+            <Scrollbars style={{minHeight: 500}} renderTrackHorizontal={props => <div {...props} className="track-horizontal"/>}>
               <div style={{padding: 10}}>
                 {this.props.children}
               </div>
