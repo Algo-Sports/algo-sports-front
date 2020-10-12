@@ -77,41 +77,53 @@ class Profile extends Component {
         gamename: '길찾기', rate: 35,
       },
     ];
+
+    this.user = {
+      username: "test user",
+      ranking: 30,
+      belong: "KMU university",
+      numOfPlayingGame: 20
+    }
   }
 
   render() {
     return (
       <BaseLayout>
         <Row gutter = {8} style={{paddingTop: 20 }}>
-          <Col xs = {24} md = {24} lg = {4}>
-            <Card>
+          <Col xs = {24} md = {10} lg = {6}>
+            <Card minHeight = {200} maxHeight = {500}>
               <div className = {styles.avatar}/>
               <h2 style = {{textAlign:"center"}}>
-                username
+                {this.user.username}
               </h2>
+              <h3 style = {{textAlign:"center"}}>
+                행킹: {this.user.ranking} 위
+              </h3>
+              <h3 style = {{textAlign:"center"}}>
+                소속: {this.user.belong}
+              </h3>
+              <h3 style = {{textAlign:"center"}}>
+                참가한 게임 수: {this.user.numOfPlayingGame}
+              </h3>
             </Card>
           </Col>
-          <Col xs = {24} md = {24} lg = {20}>
-            <Row>
-              <Col xs = {24} md = {24} lg = {24}>
-                <Card>
-                  <h2>
-                    Chart
-                  </h2> 
-                  <ExperienceChart data = {this.experienceData} height = {300}/>
-                </Card>
-              </Col>
-              <Col xs = {24} md = {12} lg = {12}>
-                <Card>
-                  <WinningRateChart data = {this.winningRateData} dataKey = {"rate"} height = {300} minHeight = {300} fillColor = {"#7095FF"}/>
-                </Card>
-              </Col>
-              <Col xs = {24} md = {12} lg = {12}>
-                <Card>
-                  <WinningRateChart data = {this.losingRateData} dataKey = {"rate"} height = {300} minHeight = {300} fillColor = {"#FF7070"}/>
-                </Card>
-              </Col>
-            </Row>
+          <Col xs = {24} md = {14} lg = {18}>
+            <Card minHeight = {200} maxHeight = {500}>
+              <h2>
+                Chart
+              </h2> 
+              <ExperienceChart data = {this.experienceData} height = {300}/>
+            </Card>
+          </Col>
+          <Col xs = {24} md = {12} lg = {12}>
+            <Card>
+              <WinningRateChart data = {this.winningRateData} dataKey = {"rate"} height = {300} minHeight = {300} fillColor = {"#7095FF"}/>
+            </Card>
+          </Col>
+          <Col xs = {24} md = {12} lg = {12}>
+            <Card>
+              <WinningRateChart data = {this.losingRateData} dataKey = {"rate"} height = {300} minHeight = {300} fillColor = {"#FF7070"}/>
+            </Card>
           </Col>
         </Row>
       </BaseLayout>
