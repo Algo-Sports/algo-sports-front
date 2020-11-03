@@ -1,0 +1,18 @@
+body {
+    height: 100%;
+    background: #1F263B;
+}
+
+body > div, body > div > section{
+    height: 100%;
+}
+
+div.logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+div.logo img {
+    width: 30%;
+}
