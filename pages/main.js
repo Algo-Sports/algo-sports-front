@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import SiderLayout from './siderLayout';
+import SiderLayout from './layouts/siderLayout';
 
-class HomeLayout extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
   }
@@ -15,4 +15,4 @@ class HomeLayout extends Component {
   }
 }
 
-export default HomeLayout;
+export default Main;

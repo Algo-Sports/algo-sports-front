@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import BaseLayout from './layouts/baseLayout'
 import {Row, Col} from 'antd'
-import ExperienceChart from '../pages/components/experienceChart';
-import WinningRateChart from '../pages/components/winningRateChart';
-import Card from '../pages/components/card';
+import ExperienceChart from '../components/experienceChart';
+import WinningRateChart from '../components/winningRateChart';
+import Card from '../components/card';
 import styles from '../styles/profile.module.css';
 
 class Profile extends Component {
