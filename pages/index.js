@@ -1,13 +1,18 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import BaseLayout from './layouts/baseLayout'
-import HomeLayout from './layouts/homeLayout'
+import Main from './main'
+import SignIn from './signin'
+import {useState} from 'react'
 
-export default function Home() {
+const Home = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   return (
-    <BaseLayout>
-      <HomeLayout>
-      </HomeLayout>
-    </BaseLayout>
+    <div>
+      {isLoggedIn ? <BaseLayout><Main/></BaseLayout> : <SignIn setIsLoggedIn = {setIsLoggedIn}/>}
+    </div>
+    
   )
 }
+
+export default Home;

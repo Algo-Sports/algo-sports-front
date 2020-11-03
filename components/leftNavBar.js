@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from '../../styles/siderLayout.module.css'
+import styles from '../styles/siderLayout.module.css'
 import { Layout, Menu} from 'antd';
 import {
   DotChartOutlined,
