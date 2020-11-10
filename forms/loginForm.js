@@ -46,11 +46,13 @@ const LoginForm = ( { setIsLoggedIn } ) => {
           onChange={onChangeId}/>
       </Form.Item>
       <Form.Item label="비밀번호">
-        <Input placeholder="비밀번호"
-        required
-        value={password}
-        onChange={onChangePassword}
-      />
+        <Input 
+          type="password"
+          placeholder="비밀번호"
+          required
+          value={password}
+          onChange={onChangePassword}
+        />
       </Form.Item>
       <Form.Item>
         <ButtonWrapper>
