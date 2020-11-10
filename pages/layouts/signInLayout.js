@@ -10,8 +10,8 @@ class SignInLayout extends Component {
     render() {
         return(
             <Row justify="center" className={styles.row}>
-                <Col xs = {12} sm = {12} md = {8} lg = {8} style={{display:"flex"}}>
-                    <Card bordered="true" style={{margin:"auto", width:"100%", height:"400px", borderRadius:"10px"}}>
+                <Col xs = {12} sm = {12} md = {8} lg = {8} style={{display:"flex", transition: "1s"}}>
+                    <Card bordered="true" style={{margin:"auto", width:"100%", height:"fit-content", borderRadius:"10px"}}>
                         {this.props.children}
                     </Card>
                 </Col>
