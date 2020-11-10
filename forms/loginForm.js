@@ -1,15 +1,18 @@
 import React, { useState, useCallback} from 'react';
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, Row, Col  } from 'antd';
 import Link from 'next/link';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styles from '../styles/loginForm.module.css';
 
 const ButtonWrapper = styled.div`
   margin-top: 10px;
+  text-align: center;
 `;
 
 const FormWrapper = styled(Form)`
   padding: 10;
+  text-align: center;
 `;
 
 const LoginForm = ( { setIsLoggedIn } ) => {
@@ -28,33 +31,38 @@ const LoginForm = ( { setIsLoggedIn } ) => {
     console.log(id, password);
     setIsLoggedIn(true);
   }, [id, password]);
+  const [form] = Form.useForm();
 
   return (
-    <FormWrapper onFinish = {onSubmitForm}>
-      <div>
-        <label htmlFor="user-id">아이디</label>
-        <br />
+    <FormWrapper
+      form={form}
+    >
+      <Form.Item label="이메일">
         <Input
-          name="user-id"
+          name = "user_email" 
+          placeholder="이메일"
+          required 
           value={id}
-          onChange={onChangeId}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="user-password">비밀번호</label>
-        <br />
-        <Input
-          name="user-password"
-          value={password}
-          onChange={onChangePassword}
-          required
-        />
-      </div>
-      <ButtonWrapper>
-        <Button type="primary" htmlType="submit" loading={false}> 로그인 </Button>
-        <Link href="/signup"><a><Button>회원가입</Button></a></Link>
-      </ButtonWrapper>
+          onChange={onChangeId}/>
+      </Form.Item>
+      <Form.Item label="비밀번호">
+        <Input placeholder="비밀번호"
+        required
+        value={password}
+        onChange={onChangePassword}
+      />
+      </Form.Item>
+      <Form.Item>
+        <ButtonWrapper>
+          <Button className = {styles.submitButton} htmlType="submit" loading={false} > 로그인 </Button>
+        </ButtonWrapper>
+      </Form.Item>
+
+      <hr/>
+      <Form.Item>
+        <Link href="/signup"><a>회원가입</a></Link><br/>
+        <Link href="/signup"><a>Sign up using Github</a></Link>
+      </Form.Item>
     </FormWrapper>
   );
 };
