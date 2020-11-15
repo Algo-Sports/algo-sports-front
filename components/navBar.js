@@ -25,7 +25,11 @@ class NavBar extends Component {
           </Col>
 
           <Col lg={{ span: 2 }}>
-            Game
+            <Link href = "/gameList">
+              <a>
+                Game
+              </a>
+            </Link>
           </Col>
 
           <Col lg={{ span: 2 }}>
@@ -37,11 +41,19 @@ class NavBar extends Component {
           </Col>
 
           <Col lg={{ span: 2 }}>
-            Award
+            <Link href = "/awardList">
+              <a>
+                Award
+              </a>
+            </Link>
           </Col>
 
           <Col lg={{ span: 2 }}>
-            Blog
+            <Link href = "/blogList">
+              <a>
+                Blog
+              </a>
+            </Link>
           </Col>
 
           <Col lg={{ span: 11 }}>

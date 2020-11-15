@@ -30,8 +30,6 @@ class RankingTable extends Component {
       pagination,
       ...filters,
     });
-
-    console.log(sorter.field);
   };
 
   fetch(params = {}) {
