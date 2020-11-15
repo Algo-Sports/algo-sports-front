@@ -41,20 +41,20 @@ const columns = [
     )
   },
   {
-    title: "",
+    title: "Ranking",
     dataIndex: "id",
     width: '10%',
     render: id => (
-      <Link href = {"/game/"+id}>
+      <Link href = {"/game/result/"+id}>
         <a style={{color:"#FF7596", textDecoration:"underline"}}>
-          Join Game
+          Ranking
         </a>
       </Link>
     )
   },
 ]
 
-class OnGoingGameTable extends Component {
+class PastGameTable extends Component {
   state = {
     data: [],
     pagination: {
@@ -67,7 +67,50 @@ class OnGoingGameTable extends Component {
   constructor(props) {
     super(props);
     this.data = this.props.data;
+    this.showRanking = this.props.showRanking;
     this.category = this.props.category ? this.props.category : "general";
+    this.columns = columns;
+    if(this.showRanking == false) {
+      this.columns = [
+        {
+          title: "Game Name",
+          dataIndex: "name",
+          width: '20%',
+        },
+        {
+          title: "Creator",
+          dataIndex: "creator",
+          width: '10%',
+        },
+        {
+          title: "Description",
+          dataIndex: "description",
+          width: '30%',
+        },
+        {
+          title: "start",
+          dataIndex: "start",
+          width: '15%',
+        },
+        {
+          title: "end",
+          dataIndex: "end",
+          width: '15%',
+        },
+        {
+          title: "",
+          dataIndex: "currentUser",
+          width: '10%',
+          render: (count, row) => (
+            <Link  href = {"/game/user/"+row.id}>
+              <a  style={{color:"#7095FF", textDecoration:"underline"}}>
+                {count}
+              </a>
+            </Link>
+          )
+        },
+      ]
+    }
   }
 
   componentDidMount() {
@@ -102,10 +145,10 @@ class OnGoingGameTable extends Component {
     return (
       <div style={{ backgroundColor: "#1F263B", boxShadow: "3px 3px 10px #000000", margin: "50px 0 50px 0", padding: "20px" }}>
         <h2>
-          Ongoing Game
+          Past Game
         </h2>
         <Table
-          columns={columns}
+          columns={this.columns}
           rowKey={ranking => ranking.username}
           dataSource={data}
           loading={loading}
@@ -119,4 +162,4 @@ class OnGoingGameTable extends Component {
     )
   }
 }
-export default OnGoingGameTable;
+export default PastGameTable;

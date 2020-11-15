@@ -8,7 +8,6 @@ const { TabPane } = Tabs;
 
 
 class GameList extends Component {
-    
     render() {
         return (
             <BaseLayout>
