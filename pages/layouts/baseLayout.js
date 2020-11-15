@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Row, Col} from 'antd';
 import NavBar from '../../components/navBar';
+import Footer from '../../components/footer';
 
 class BaseLayout extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class BaseLayout extends Component {
             <>
                 <NavBar/>
                 {this.props.children}
+                <Footer/>
             </>
         )
     }
