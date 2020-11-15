@@ -1,0 +1,23 @@
+.rankingTable .ant-table tr, .rankingTable .ant-table th{
+    text-align: center;
+}
+
+.rankingTable .ant-table {
+    color: white;
+    background-color: #2C3450;
+    line-height: 8px;
+}
+
+.rankingTable .ant-table .ant-table-thead th{
+    color: white;
+    background-color: #2C3450;
+}
+
+.rankingTable .ant-table-tbody > tr.ant-table-row-level-0:hover > td {
+    background-color: #2D3247;
+    color: rgb(238, 187, 187);
+}
+
+.rankingTable td.ant-table-column-sort {
+    background-color: #2C3450;
+}

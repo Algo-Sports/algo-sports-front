@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'antd';
+import Link from 'next/link'
+
 import styles from '../styles/navBar.module.css';
 import {
   UserOutlined,
@@ -10,13 +12,16 @@ class NavBar extends Component {
     super(props);
   }
 
-
   render() {
     return (
       <nav className = {styles.navBarContainer}>
         <Row gutter={[8]}>
           <Col lg={{ span: 3 }}>
-            <img className = {styles.mainLogo}src = "/hori-logo.png"/>
+            <Link href = "/">
+              <a>
+                <img className = {styles.mainLogo} src = "/hori-logo.png"/>
+              </a>
+            </Link>
           </Col>
 
           <Col lg={{ span: 2 }}>
@@ -24,7 +29,11 @@ class NavBar extends Component {
           </Col>
 
           <Col lg={{ span: 2 }}>
-            Ranking
+            <Link href = "/ranking">
+              <a>
+                Ranking
+              </a>
+            </Link>
           </Col>
 
           <Col lg={{ span: 2 }}>
