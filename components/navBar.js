@@ -59,7 +59,11 @@ class NavBar extends Component {
           <Col lg={{ span: 11 }}>
           </Col>
           <Col lg={{ span: 2 }} style = {{lineHeight: "100%"}}>
-            <UserOutlined style={{fontSize: "30px", position: "absolute", top: "50%", transform: "translateY(-50%)"}} />
+            <Link href = "/profile">
+              <a>
+                <UserOutlined style={{fontSize: "30px", position: "absolute", top: "50%", transform: "translateY(-50%)"}} />
+              </a>
+            </Link>
           </Col>
         </Row>
       </nav>
