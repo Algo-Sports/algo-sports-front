@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { Row, Col } from 'antd';
 import styles from '../styles/navBar.module.css';
+import {
+  UserOutlined,
+} from '@ant-design/icons';
 
 class NavBar extends Component {
   constructor(props) {
@@ -34,9 +37,8 @@ class NavBar extends Component {
 
           <Col lg={{ span: 11 }}>
           </Col>
-
-          <Col lg={{ span: 2 }}>
-            Profile
+          <Col lg={{ span: 2 }} style = {{lineHeight: "100%"}}>
+            <UserOutlined style={{fontSize: "30px", position: "absolute", top: "50%", transform: "translateY(-50%)"}} />
           </Col>
         </Row>
       </nav>
