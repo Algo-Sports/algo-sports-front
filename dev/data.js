@@ -61,3 +61,44 @@ export const updateLog = [
     }
 
 ]
+
+
+export const rankingData = [
+    
+    {
+        "ranking" : 1,
+        "username": "singun11",
+        "comment": "Hello, Everyone",
+        "score" : 2100,
+    },
+    {
+        "ranking" : 2,
+        "username": "aqudi",
+        "comment" : "Hello",
+        "score" : 2000,
+    },
+    {
+        "ranking" : 3,
+        "username": "aqudi2",
+        "comment" : "Hello",
+        "score" : 1500,
+    },
+    {
+        "ranking" : 4,
+        "username": "aqudi3",
+        "comment" : "Hello",
+        "score" : 1000,
+    },
+    {
+        "ranking" : 5,
+        "username": "aqudi4",
+        "comment" : "Hello",
+        "score" : 1000,
+    },
+    {
+        "ranking" : 6,
+        "username": "aqudi5",
+        "comment" : "Hello",
+        "score" : 900,
+    },
+]
