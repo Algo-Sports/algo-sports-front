@@ -49,7 +49,7 @@ class NavBar extends Component {
           </Col>
 
           <Col lg={{ span: 2 }}>
-            <Link href = "/blogList">
+            <Link href = "/postList">
               <a>
                 Blog
               </a>
