@@ -3,7 +3,7 @@ import styles from '../../styles/siderLayout.module.css'
 import { Layout, Breadcrumb } from 'antd';
 import { withRouter } from 'next/router'
 import { Scrollbars } from 'react-custom-scrollbars';
-import LeftNavBar from '../components/leftNavBar';
+import LeftNavBar from '../../components/leftNavBar';
 
 const { Header, Content, Footer} = Layout;
 
