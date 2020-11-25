@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BaseLayout from '../layouts/baseLayout';
 import Banner from '../components/banner';
 import PostCard from '../components/postCard';
+import ListLoader from '../components/listLoader';
 import {BASE_API_URL} from '../constants/api';
 
 // import {commentData} from '../dev/data'; // postData
@@ -11,6 +12,8 @@ import axios from 'axios';
 class PostList extends Component {
   state = {
     token: "c038fe1d07786596374d9769236e84c07f95d338",
+    postDataLoading: true,
+    recentPostDataLoading: true,
     postData: [],
     commentData : [],
   }
@@ -59,7 +62,8 @@ class PostList extends Component {
       })
       console.log(response);
       this.setState({
-        commentData: response.data.results
+        commentData: response.data.results,
+        postDataLoading: false,
       })
     }
     catch{
@@ -97,19 +101,19 @@ class PostList extends Component {
     return (
       <BaseLayout>
         <Banner title="Blog" subtitle="Hello, World!" message="Read, Write, Share" />
-        <Row  style = {{marginTop : 20}}>
-          <Col lg = {{span: 1}}/>
-          <Col lg = {{span: 15}}>
-            {postList}
-          </Col>
-          <Col lg = {{span: 1}}/>
-          <Col lg = {{span: 6}}>
-            <div>
+        
+          <Row className ="min-height-30" style = {{marginTop : 20}}>
+            <Col lg = {{span: 1}}/>
+            <Col lg = {{span: 15}}>
+             {this.state.postDataLoading ? <ListLoader/> : postList}
+            </Col>
+            <Col lg = {{span: 1}}/>
+            <Col lg = {{span: 6}}>
+              {this.state.recentPostDataLoading ? <ListLoader/> : <div></div>}
 
-            </div>
-          </Col>
-          <Col lg = {{span: 1}}/>
-        </Row>
+            </Col>
+            <Col lg = {{span: 1}}/>
+          </Row>
       </BaseLayout>
     )
   }

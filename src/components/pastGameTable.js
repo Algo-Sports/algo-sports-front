@@ -137,7 +137,7 @@ class PastGameTable extends Component {
     const { data, pagination, loading } = this.state;
 
     return (
-      <div style={{ backgroundColor: "#1F263B", boxShadow: "3px 3px 10px #000000", margin: "50px 0 50px 0", padding: "20px" }}>
+      <div className = "outer-card-layout" style={{boxShadow: "3px 3px 10px #000000", margin: "50px 0 50px 0"}}>
         <h2>
           Past Game
         </h2>

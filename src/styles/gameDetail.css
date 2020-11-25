@@ -1,0 +1,31 @@
+.game-detail-nav {
+    height: 60px;
+    background-color: #1f263b;
+}
+
+.gameDetailTab .ant-tabs-content {
+    padding: 10;
+    background-color: #2C3450;
+    height: 100%;
+}
+
+.gameDetailTab .ant-tabs-nav-wrap {
+    background-color: #1f263b;
+}
+
+.ant-tabs-card.ant-tabs-top.gameDetailTab > .ant-tabs-nav .ant-tabs-tab-active, .ant-tabs-card.ant-tabs-top.gameDetailTab > div > .ant-tabs-nav .ant-tabs-tab-active{
+    background-color: #2C3450;
+}
+
+.gameDetailTab .ant-tabs-content div.game-description-container {
+    height:90%;
+    padding: 20px;
+    background-color: #2C3450;
+    color: #C4D3FF;
+}
+
+.gameDetailTab .ant-tabs-content div.game-description-container hr {
+    margin-left: 0;
+    color: white;
+    width: 50%;
+}

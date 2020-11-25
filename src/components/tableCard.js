@@ -44,7 +44,7 @@ class TableCard extends Component {
         <h1 style={{ fontSize: 20, textDecoration: "underline" }}>
           {this.tableTitle}
         </h1>
-        <div style={{backgroundColor: "#1F263B", boxShadow:"0px 3px 5px #000000",}}>
+        <div className = "outer-card-layout-padding-10" style={{ boxShadow:"0px 3px 5px #000000",}}>
           {this.data ? this.dataComponet : <></>}
         </div>
       </div>

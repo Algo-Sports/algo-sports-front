@@ -3,24 +3,25 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import './styles/table.css';
 import './styles/tab.css';
+import './styles/gameDetail.css';
 
 import App from './App';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import GameList from './pages/gameList';
-import Ranking from './pages/ranking';
-import AwardList from './pages/awardList';
-import PostList from './pages/postList';
-import Profile from './pages/profile';
+import {GameList, Ranking, AwardList, PostList, Profile, Game, Signin, Signup} from './pages';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Route path = "/" exact={true} component = {App}/>
-      <Route path = "/game" component = {GameList}/>
+      <Route path = "/gamelist" component = {GameList}/>
+      <Route path = "/game/:game_id" component = {Game}/>
       <Route path = "/ranking" component = {Ranking}/>
       <Route path = "/awardList" component = {AwardList}/>
       <Route path = "/postList" component = {PostList}/>
+      <Route path = "/profile" component = {Profile}/>
+      <Route path = "/signin" component = {Signin}/>
+      <Route path = "/signup" component = {Signup}/>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
