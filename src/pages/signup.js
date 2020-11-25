@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import NoNavLayout from './layouts/NoNavLayout'
+import NoNavLayout from '../layouts/noNavLayout'
 import RegisterForm from '../forms/registerForm';
-import SignInLayout from './layouts/signInLayout';
+import SignInLayout from '../layouts/signInLayout';
 import {Image} from 'antd';
 import { Form, Input, Button, Radio } from 'antd';
 import styles from '../styles/signin.module.css'
@@ -19,6 +19,7 @@ class SignUp extends Component {
             <img
               src = "/logo.png"
               style={{padding: 5}}
+              alt = "logo"
             />
           </div>
           <RegisterForm setIsLoggedIn = {this.props.setIsLoggedIn}/>

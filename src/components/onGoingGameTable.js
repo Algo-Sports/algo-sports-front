@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Table, Tooltip } from 'antd';
 
 const columns = [
@@ -33,7 +33,7 @@ const columns = [
     dataIndex: "currentUser",
     width: '10%',
     render: (count, row) => (
-      <Link  to = {"/game/user/"+row.id} style={{color:"#7095FF", textDecoration:"underline"}}>
+      <Link to={"/game/user/" + row.id} style={{ color: "#7095FF", textDecoration: "underline" }}>
         {count}
       </Link>
     )
@@ -43,15 +43,11 @@ const columns = [
     dataIndex: "id",
     width: '10%',
     render: id => (
-      <Link 
-        href={{
-          pathname: '/game',
-          query: { game_id: id },
-        }}>
-        <a style={{color:"#FF7596", textDecoration:"underline"}}>
-          Join Game
-        </a>
-      </Link>
+      <Link
+        to={'/game/'+ id}
+        style={{ color: "#FF7596", textDecoration: "underline" }}>
+        Join Game
+      </Link >
     )
   },
 ]
@@ -76,7 +72,7 @@ class OnGoingGameTable extends Component {
     const { pagination } = this.state;
     this.fetch({ pagination });
   }
-  
+
   handleTableChange = (pagination, filters, sorter) => {
     this.fetch({
       sortField: sorter.field,
@@ -113,8 +109,8 @@ class OnGoingGameTable extends Component {
           loading={loading}
           onChange={this.handleTableChange}
           showSorterTooltip={false}
-          className = {"onGoingGameTable"}
-          pagination = {false}
+          className={"onGoingGameTable"}
+          pagination={false}
         />
 
       </div>
