@@ -1,0 +1,12 @@
+export {default as AwardList} from './awardList';
+export {default as Game} from './game';
+export {default as GameList} from './gameList';
+export {default as GeneralGameList} from './generalGameList';
+export {default as Main} from './main';
+export {default as PostList} from './postList';
+export {default as PracticeGameList} from './practiceGameList';
+export {default as Profile} from './profile';
+export {default as RankGameList} from './rankGameList';
+export {default as Ranking} from './ranking';
+export {default as Signin} from './signin';
+export {default as Signup} from './signup';
