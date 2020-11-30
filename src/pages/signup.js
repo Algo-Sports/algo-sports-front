@@ -7,6 +7,7 @@ import { Form, Input, Button, Radio } from 'antd';
 import styles from '../styles/signin.module.css'
 
 class SignUp extends Component {
+  
   constructor(props) {
     super(props);
   }
@@ -22,7 +23,7 @@ class SignUp extends Component {
               alt = "logo"
             />
           </div>
-          <RegisterForm setIsLoggedIn = {this.props.setIsLoggedIn}/>
+          <RegisterForm/>
         </SignInLayout>
       </NoNavLayout>
     )

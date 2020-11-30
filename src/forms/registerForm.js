@@ -1,9 +1,12 @@
 import React, { useState, useCallback } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Input, Button, Row, Col } from 'antd';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import styles from '../styles/loginForm.module.css';
+import styles from '../styles/signin.module.css';
+
+// import { signup } from "../actions/auth";
 
 const ButtonWrapper = styled.div`
   margin-top: 10px;
@@ -15,13 +18,23 @@ const FormWrapper = styled(Form)`
   text-align: center;
 `;
 
-const RegisterForm = ({ setIsLoggedIn }) => {
-  const [id, setId] = useState('');
+const RegisterForm = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
+  const [success, setSuccess] = useState(false);
 
-  const onChangeId = useCallback((e) => {
-    setId(e.target.value);
+  
+  const { message } = useSelector(state => state.message);
+  const dispatch = useDispatch();
+
+  const onChangeUsername = useCallback((e) => {
+    setUsername(e.target.value);
+  }, []);
+
+  const onChangeEmail = useCallback((e) => {
+    setEmail(e.target.value);
   }, []);
 
   const onChangePassword = useCallback((e) => {
@@ -33,23 +46,39 @@ const RegisterForm = ({ setIsLoggedIn }) => {
   }, []);
 
 
-  const onSubmitForm = useCallback((e) => {
-    console.log(id, password);
-    setIsLoggedIn(true);
-  }, [id, password]);
+  const onSubmitForm = (e) => {
+    e.preventDefault();
+    // setSuccess(false);
+    // dispatch(signup(username, email, password, rePassword)).then(()=>{
+    //   setSuccess(true);
+    // })
+    // .catch(()=>{
+    //   setSuccess(false);
+    // })
+
+  };
+
   const [form] = Form.useForm();
 
   return (
     <FormWrapper
       form={form}
     >
+      <Form.Item label="유저명">
+        <Input
+          name="username"
+          placeholder="유저명"
+          required
+          value={username}
+          onChange={onChangeUsername} />
+      </Form.Item>
       <Form.Item label="이메일">
         <Input
           name="user_email"
           placeholder="이메일"
           required
-          value={id}
-          onChange={onChangeId} />
+          value={email}
+          onChange={onChangeEmail} />
       </Form.Item>
       <Form.Item label="비밀번호">
         <Input placeholder="비밀번호"
@@ -69,7 +98,7 @@ const RegisterForm = ({ setIsLoggedIn }) => {
       </Form.Item>
       <Form.Item>
         <ButtonWrapper>
-          <Button className={styles.submitButton} htmlType="submit" loading={false} > 회원가입 </Button>
+          <Button className={styles.submitButton} htmlType="submit" loading={false} onClick = {onSubmitForm}> 회원가입 </Button>
         </ButtonWrapper>
       </Form.Item>
 
@@ -78,12 +107,16 @@ const RegisterForm = ({ setIsLoggedIn }) => {
         <Link to="/signin">로그인</Link><br />
         <Link to="#">Sign up using Github</Link>
       </Form.Item>
+      
+      {message && (
+        <div className="form-group">
+          <div className={ success ? "alert alert-success" : "alert alert-danger" } role="alert">
+            {message}
+          </div>
+        </div>
+      )}
     </FormWrapper>
   );
 };
-
-RegisterForm.propTypes = {
-  setIsLoggedIn: PropTypes.func.isRequired,
-}
 
 export default RegisterForm;
