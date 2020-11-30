@@ -8,21 +8,27 @@ import './styles/gameDetail.css';
 import App from './App';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import {GameList, Ranking, AwardList, PostList, Profile, Game, Signin, Signup} from './pages';
+import {GameList, Game, Ranking, AwardList, PostList, Profile, Signin, Signup, LoginPage} from './pages';
+import {Provider} from 'react-redux';
+import store from './_helpers/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Route path = "/" exact={true} component = {App}/>
-      <Route path = "/gamelist" component = {GameList}/>
-      <Route path = "/game/:game_id" component = {Game}/>
-      <Route path = "/ranking" component = {Ranking}/>
-      <Route path = "/awardList" component = {AwardList}/>
-      <Route path = "/postList" component = {PostList}/>
-      <Route path = "/profile" component = {Profile}/>
-      <Route path = "/signin" component = {Signin}/>
-      <Route path = "/signup" component = {Signup}/>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Route path = "/" exact={true} component = {App}/>
+        <Route path = "/gamelist" component = {GameList}/>
+        <Route path = "/game/:game_id" component = {Game}/>
+        <Route path = "/ranking" component = {Ranking}/>
+        <Route path = "/awardList" component = {AwardList}/>
+        <Route path = "/postList" component = {PostList}/>
+        <Route path = "/profile" component = {Profile}/>
+        <Route path = "/signin" component = {Signin}/>
+        <Route path = "/signup" component = {Signup}/>
+        <Route path = "/testSignin" component = {LoginPage}/>
+        
+      </Router>
+    </Provider>  
   </React.StrictMode>,
   document.getElementById('root')
 );

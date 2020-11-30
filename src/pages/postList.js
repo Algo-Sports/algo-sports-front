@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/baseLayout';
 import Banner from '../components/banner';
 import PostCard from '../components/postCard';
 import ListLoader from '../components/listLoader';
-import {BASE_API_URL} from '../constants/api';
+import {BASE_API_URL} from '../_constants/api.constants';
 
 // import {commentData} from '../dev/data'; // postData
 import { Col, Row } from 'antd';
@@ -35,7 +35,7 @@ class PostList extends Component {
     try{
       const response = await axios({
         method: 'get',
-        url: BASE_API_URL + "posts/",
+        url: BASE_API_URL + "/posts/",
         headers: {
           Authorization: "Token " + this.state.token
         }
@@ -55,7 +55,7 @@ class PostList extends Component {
     try{
       const response = await axios({
         method: 'get',
-        url: BASE_API_URL + "comments/",
+        url: BASE_API_URL + "/comments/",
         headers: {
           Authorization: "Token " + this.state.token
         }
