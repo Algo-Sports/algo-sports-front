@@ -13,10 +13,6 @@ class RankingTable extends Component {
     loading: false,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { pagination } = this.state;
     this.fetch({ pagination });
@@ -45,14 +41,13 @@ class RankingTable extends Component {
   }
 
   render() {
-    const { data, pagination, loading } = this.state;
+    const { data, loading } = this.state;
 
     
     const columns = [
       {
         title: 'Ranking',
         dataIndex: 'ranking',
-        sorter: true,
         width: '20%',
         sortDirections: ['descend', 'ascend'],
         sorter: {

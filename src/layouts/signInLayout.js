@@ -3,9 +3,6 @@ import {Row, Col, Card} from 'antd';
 import styles from '../styles/signInLayout.module.css'
 
 class SignInLayout extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return(

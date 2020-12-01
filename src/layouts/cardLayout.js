@@ -4,7 +4,7 @@ class CardLayout extends Component {
   constructor(props) {
     super(props);
     this.backgroundColor = this.props.backgroundColor || "#1F263B";
-    if(this.props.backgroundColor == false) {
+    if(this.props.backgroundColor === false) {
       this.boxShadow = "";
     }
     else {

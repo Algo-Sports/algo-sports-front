@@ -6,27 +6,31 @@ import './styles/tab.css';
 import './styles/gameDetail.css';
 
 import App from './App';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import {GameList, Game, Ranking, AwardList, PostList, Profile, Signin, Signup, LoginPage} from './pages';
+import {GameList, Game, Ranking, AwardList, PostList, Profile, Signin, Signup} from './pages';
 import {Provider} from 'react-redux';
 import store from './_helpers/store';
+import {history} from './_helpers/history';
+import NotFoundPage from './pages/NotFoundPage';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store} history = {history}>
       <Router>
-        <Route path = "/" exact={true} component = {App}/>
-        <Route path = "/gamelist" component = {GameList}/>
-        <Route path = "/game/:game_id" component = {Game}/>
-        <Route path = "/ranking" component = {Ranking}/>
-        <Route path = "/awardList" component = {AwardList}/>
-        <Route path = "/postList" component = {PostList}/>
-        <Route path = "/profile" component = {Profile}/>
-        <Route path = "/signin" component = {Signin}/>
-        <Route path = "/signup" component = {Signup}/>
-        <Route path = "/testSignin" component = {LoginPage}/>
-        
+        <Switch>
+          <Route key = "/" path = "/" exact={true} component = {App}/>
+          <Route key = "/gamelist" path = "/gamelist" component = {GameList}/>
+          <Route key = "/game/:game_id" path = "/game/:game_id" component = {Game}/>
+          <Route key = "/ranking" path = "/ranking" component = {Ranking}/>
+          <Route key = "/awardList" path = "/awardList" component = {AwardList}/>
+          <Route key = "/postList" path = "/postList" component = {PostList}/>
+          <Route key = "/profile" path = "/profile" component = {Profile}/>
+          <Route key = "/signin" path = "/signin" component = {Signin}/>
+          <Route key = "/signup" path = "/signup" component = {Signup}/>
+          <Route key = "404" path = "/*" component = {NotFoundPage}/>
+        </Switch>
       </Router>
     </Provider>  
   </React.StrictMode>,

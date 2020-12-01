@@ -30,9 +30,6 @@ class GameResultTable extends Component {
         sorter: true,
         width: '10%',
         sortDirections: ['descend', 'ascend'],
-        sorter: {
-          compare: (a, b) => b.ranking - a.ranking,
-        }
       },
       {
         title: 'user1',
