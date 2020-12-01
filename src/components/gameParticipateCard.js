@@ -18,9 +18,12 @@ class GameParticipateCard extends Component {
           </p>
         </div>
         <div className="padding-10">
-          <button style={{ backgroundColor: "#465580", color: "white", border: "none", height: "50px", width: "80%", margin: "0 10% 0 10%", fontSize: "1.3rem" }}>
-            Game Start
-                    </button>
+          <button 
+            style={{ backgroundColor: "#465580", color: "white", border: "none", height: "50px", width: "80%", margin: "0 10% 0 10%", fontSize: "1.3rem" }}
+            onClick = {this.props.changeDescription}
+          >
+            Submit Code!
+          </button>
         </div>
 
       </div>
