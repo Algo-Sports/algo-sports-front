@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { Table, Tooltip } from 'antd';
+import { Table } from 'antd';
 
 const columns = [
   {
@@ -68,34 +68,8 @@ class OnGoingGameTable extends Component {
     this.category = this.props.category ? this.props.category : "general";
   }
 
-  componentDidMount() {
-    const { pagination } = this.state;
-    this.fetch({ pagination });
-  }
-
-  handleTableChange = (pagination, filters, sorter) => {
-    this.fetch({
-      sortField: sorter.field,
-      sortOrder: sorter.order,
-      pagination,
-      ...filters,
-    });
-  };
-
-  fetch(params = {}) {
-    this.setState({ loading: true });
-
-    // request
-
-    this.setState({
-      ...this.state,
-      loading: false,
-      data: this.data,
-    });
-  }
-
   render() {
-    const { data, pagination, loading } = this.state;
+    const { data, loading } = this.state;
 
     return (
       <div style={{ backgroundColor: "#1F263B", boxShadow: "3px 3px 10px #000000", margin: "50px 0 50px 0", padding: "20px" }}>

@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import {Row, Col} from 'antd';
 
 export default class Banner extends Component {
-  constructor(props) {
-    super(props);
-  }
   
   render() {
     return (

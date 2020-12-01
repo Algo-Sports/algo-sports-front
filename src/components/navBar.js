@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Row, Col } from 'antd';
 import { Link } from 'react-router-dom'
 import styles from '../styles/navBar.module.css';
-import App from '../App';
 
 import {
   UserOutlined,

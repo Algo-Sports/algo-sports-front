@@ -5,10 +5,6 @@ import {Layout} from 'antd'
 const { Content } = Layout;
 
 class NoNavLayout extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
         <Layout className={styles.containter}>

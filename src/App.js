@@ -1,4 +1,3 @@
-import styles from './styles/Home.module.css'
 import BaseLayout from './layouts/baseLayout'
 import Main from './pages/main'
 import {Signin} from './pages/signin'

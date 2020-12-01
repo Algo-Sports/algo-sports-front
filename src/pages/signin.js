@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import NoNavLayout from '../layouts/noNavLayout'
 import SignInLayout from '../layouts/signInLayout';
-import { Form, Input, Button, Label, Radio } from 'antd';
-import { Link, Redirect } from 'react-router-dom';
+import { Form, Input, Button} from 'antd';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import styles from '../styles/signin.module.css'
 import { userActions } from '../_actions';
 import { connect } from 'react-redux';
-
-const ButtonWrapper = styled.div`
-  margin-top: 10px;
-  text-align: center;
-`;
 
 const FormWrapper = styled(Form)`
   padding: 10;
@@ -48,7 +43,6 @@ class Signin extends Component {
     }
   }
   render() {
-    const { loggingIn } = this.props;
     const { password, email, submitted } = this.state;
 
     return (
@@ -58,6 +52,7 @@ class Signin extends Component {
             <img
               src="/logo.png"
               style={{ padding: 5 }}
+              alt = "Logo"
             />
           </div>
           <FormWrapper
@@ -85,7 +80,7 @@ class Signin extends Component {
             <Form.Item>
                 <Button
                   className={styles.submitButton}
-                  disabled={loggingIn}
+                  disabled={submitted}
                   htmlType="submit"
                 >
                   로그인

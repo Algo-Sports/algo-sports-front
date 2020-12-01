@@ -16,42 +16,14 @@ class GameRanking extends Component {
     this.state.data = this.props.ranking;
   }
 
-  componentDidMount() {
-    const { pagination } = this.state;
-    this.fetch({ pagination });
-  }
-
-
-  handleTableChange = (pagination, filters, sorter) => {
-    this.fetch({
-      sortField: sorter.field,
-      sortOrder: sorter.order,
-      pagination,
-      ...filters,
-    });
-  };
-
-  fetch(params = {}) {
-    this.setState({ loading: true });
-
-    // request
-
-    this.setState({
-      ...this.state,
-      loading: false,
-      data: this.props.ranking,
-    });
-  }
-
   render() {
-    const { data, pagination, loading } = this.state;
+    const { data, loading } = this.state;
 
 
     const columns = [
       {
         title: 'Ranking',
         dataIndex: 'ranking',
-        sorter: true,
         width: '10%',
         sortDirections: ['descend', 'ascend'],
         sorter: {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
-import { Table, Tooltip } from 'antd';
+import { Table } from 'antd';
 
 const columns = [
   {
@@ -66,7 +66,7 @@ class PastGameTable extends Component {
     this.showRanking = this.props.showRanking;
     this.category = this.props.category ? this.props.category : "general";
     this.columns = columns;
-    if(this.showRanking == false) {
+    if(this.showRanking === false) {
       this.columns = [
         {
           title: "Game Name",
@@ -134,7 +134,7 @@ class PastGameTable extends Component {
   }
 
   render() {
-    const { data, pagination, loading } = this.state;
+    const { data, loading } = this.state;
 
     return (
       <div className = "outer-card-layout" style={{boxShadow: "3px 3px 10px #000000", margin: "50px 0 50px 0"}}>

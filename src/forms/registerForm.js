@@ -1,9 +1,8 @@
 import React, { useState, useCallback } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { Form, Input, Button, Row, Col } from 'antd';
+// import { useDispatch, useSelector } from "react-redux";
+import { Form, Input, Button} from 'antd';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import styles from '../styles/signin.module.css';
 
 // import { signup } from "../actions/auth";
@@ -23,11 +22,11 @@ const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rePassword, setRePassword] = useState('');
-  const [success, setSuccess] = useState(false);
+  // const [success, setSuccess] = useState(false);
 
   
-  const { message } = useSelector(state => state.message);
-  const dispatch = useDispatch();
+  // const { message } = useSelector(state => state.message);
+  // const dispatch = useDispatch();
 
   const onChangeUsername = useCallback((e) => {
     setUsername(e.target.value);
@@ -108,13 +107,13 @@ const RegisterForm = () => {
         <Link to="#">Sign up using Github</Link>
       </Form.Item>
       
-      {message && (
+      {/* {message && (
         <div className="form-group">
           <div className={ success ? "alert alert-success" : "alert alert-danger" } role="alert">
             {message}
           </div>
         </div>
-      )}
+      )} */}
     </FormWrapper>
   );
 };

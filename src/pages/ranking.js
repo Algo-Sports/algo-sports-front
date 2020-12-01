@@ -6,9 +6,6 @@ import BaseLayout from '../layouts/baseLayout';
 
 
 class Ranking extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
