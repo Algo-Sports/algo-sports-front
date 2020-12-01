@@ -10,6 +10,5 @@ import RankingGameList from './rankGameList';
 import Ranking from './ranking';
 import {Signin} from './signin';
 import Signup from './signup';
-import {LoginPage} from './test';
 
-export {AwardList, Game, GameList, GeneralGameList, Main, PostList, PracticeGameList, Profile, RankingGameList, Ranking, Signin, Signup, LoginPage};
+export {AwardList, Game, GameList, GeneralGameList, Main, PostList, PracticeGameList, Profile, RankingGameList, Ranking, Signin, Signup};
