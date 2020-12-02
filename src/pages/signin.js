@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NoNavLayout from '../layouts/noNavLayout'
 import SignInLayout from '../layouts/signInLayout';
 import { Form, Input, Button} from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import styles from '../styles/signin.module.css'
 import { userActions } from '../_actions';
@@ -18,7 +18,7 @@ class Signin extends Component {
     super(props);
     
     // reset login status
-    this.props.signout();
+    // this.props.signout();
     
     this.state = {
       email: '',
@@ -43,9 +43,15 @@ class Signin extends Component {
     }
   }
   render() {
+    const {loggedIn} = this.props;
     const { password, email, submitted } = this.state;
 
+    /* TOKEN REFRESH LOGIC */
+
+
     return (
+      loggedIn?
+      <Redirect to = "/"/>:
       <NoNavLayout>
         <SignInLayout>
           <div className={styles.logo}>
@@ -100,8 +106,8 @@ class Signin extends Component {
 }
 
 function mapState(state) {
-  const { loggingIn } = state.authentication;
-  return { loggingIn };
+  const { loggedIn } = state.authentication;
+  return { loggedIn };
 }
 
 const actionCreators = {

@@ -5,7 +5,7 @@ import './styles/table.css';
 import './styles/tab.css';
 import './styles/gameDetail.css';
 
-import App from './App';
+import {App} from './App';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import {GameList, Game, Ranking, AwardList, PostList, Profile, Signin, Signup} from './pages';
