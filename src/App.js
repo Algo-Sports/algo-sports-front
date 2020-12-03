@@ -1,16 +1,33 @@
+import React , {Component} from 'react';
 import BaseLayout from './layouts/baseLayout'
-import Main from './pages/main'
-import {Signin} from './pages/signin'
-import {useState} from 'react'
+import {Main} from './pages/main'
+import { connect } from 'react-redux';
+import { userActions } from './_actions';
 
-const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  return (
-    <div>
-      {isLoggedIn ? <BaseLayout><Main/></BaseLayout> : <Signin setIsLoggedIn = {setIsLoggedIn}/>}
-    </div>
-    
-  )
+class App extends Component {
+  
+  render() {
+    const {loggedIn, user} = this.props;
+    return (
+      <div>
+          <BaseLayout>
+            <Main/>
+          </BaseLayout>
+      </div>
+
+    )
+  }
 }
 
-export default App;
+
+function mapState(state) {
+  const { authentication } = state;
+  const { loggedIn, user } = authentication;
+  return { loggedIn, user };
+}
+
+const actionCreators = {
+}
+
+const connectedApp= connect(mapState, actionCreators)(App);
+export { connectedApp as App };

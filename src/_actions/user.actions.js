@@ -17,11 +17,10 @@ function signin(username, password) {
             .then(
                 user => { 
                     dispatch(success(user));
-                    history.push('/');
                 },
                 error => {
-                    dispatch(failure(error.toString()));
-                    dispatch(alertActions.error(error.toString()));
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
                 }
             );
     };
@@ -36,20 +35,19 @@ function signout() {
     return { type: userConstants.SIGNOUT };
 }
 
-function signup(user) {
+function signup(username, email, password1, password2) {
     return dispatch => {
-        dispatch(request(user));
+        dispatch(request(username, email, password1, password2));
 
-        userService.register(user)
+        userService.signup(username, email, password1, password2)
             .then(
                 user => { 
                     dispatch(success());
-                    history.push('/signup');
                     dispatch(alertActions.success('이메일로 전송된 확인 메일 링크를 확인해주세요.'));
                 },
                 error => {
-                    dispatch(failure(error.toString()));
-                    dispatch(alertActions.error(error.toString()));
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
                 }
             );
     };

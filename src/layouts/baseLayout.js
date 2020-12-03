@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import NavBar from '../components/navBar';
+import {NavBar} from '../components/navBar';
 import Footer from '../components/footer';
 
 class BaseLayout extends Component {
