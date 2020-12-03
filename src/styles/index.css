@@ -120,3 +120,7 @@ body > div, body > div > section{
 .padding-40 {
   padding: 40px
 }
+
+div[role=alert] {
+  color: rgb(255, 117, 150);
+}
