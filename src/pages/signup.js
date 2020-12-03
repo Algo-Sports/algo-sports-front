@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NoNavLayout from '../layouts/noNavLayout'
 import SignInLayout from '../layouts/signInLayout';
-import { Form, Input, Button, notification, Alert} from 'antd';
+import { Form, Input, Button, Alert} from 'antd';
 import styles from '../styles/signin.module.css'
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
@@ -12,14 +12,6 @@ const FormWrapper = styled(Form)`
   padding: 10;
   text-align: center;
 `;
-
-const openNotification = (message, placement) => {
-  notification.info({
-    message: `Notification ${placement}`,
-    description: message,
-    placement,
-  });
-};
 
 class Signup extends Component {
   constructor(props) {
