@@ -4,9 +4,7 @@ import TableCard from '../components/tableCard';
 import CardListLayout from '../layouts/cardListLayout';
 import {onGoingGame, siteInformation, recentBlog, updateLog} from '../data/data';
 
-
-
-class Main extends Component {
+export class Main extends Component {
     constructor(props) {
         super(props);
         this.onGoingGame = [];
@@ -59,5 +57,3 @@ class Main extends Component {
     }
 
 }
-
-export default Main;

@@ -13,7 +13,8 @@ import {Provider} from 'react-redux';
 import store from './_helpers/store';
 import {history} from './_helpers/history';
 import NotFoundPage from './pages/NotFoundPage';
-
+import { pdfjs } from 'react-pdf';
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 ReactDOM.render(
   <React.StrictMode>

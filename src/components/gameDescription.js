@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PdfViewer from './pdfViewer'
 
 class GameDescription extends Component {
 
@@ -9,7 +10,7 @@ class GameDescription extends Component {
                     {this.props.game.game_name}
                 </h2>
                 <hr/>
-                {this.props.game.game_content}
+                <PdfViewer filename = {"/test.pdf"} />
             </div>
         )
     }

@@ -44,7 +44,7 @@ class Game extends Component {
 
     return (
       this.state.ingame ? <></> :
-        <GameContentLayout game= {game} ranking = {rankingList} />
+        <GameContentLayout game= {game} ranking = {rankingList}/>
     )
   }
 }

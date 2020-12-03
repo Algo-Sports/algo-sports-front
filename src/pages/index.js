@@ -2,7 +2,7 @@ import AwardList from './awardList';
 import Game from './game';
 import GameList from './gameList';
 import GeneralGameList from './generalGameList';
-import Main from './main';
+import {Main} from './main';
 import PostList from './postList';
 import PracticeGameList from './practiceGameList';
 import Profile from './profile';
