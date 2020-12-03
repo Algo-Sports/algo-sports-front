@@ -5,7 +5,7 @@ import GeneralGameList from './generalGameList';
 import Main from './main';
 import PostList from './postList';
 import PracticeGameList from './practiceGameList';
-import Profile from './profile';
+import {Profile} from './profile';
 import RankingGameList from './rankGameList';
 import Ranking from './ranking';
 import {Signin} from './signin';
