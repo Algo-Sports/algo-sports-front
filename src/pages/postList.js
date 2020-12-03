@@ -20,8 +20,6 @@ class PostList extends Component {
 
   constructor(props) {
     super(props);
-
-    this.commentMap = {};
     this.loadPostdata = this.loadPostdata.bind(this);
     this.loadCommentData = this.loadCommentData.bind(this);
   }
@@ -60,7 +58,6 @@ class PostList extends Component {
           Authorization: "Token " + this.state.token
         }
       })
-      console.log(response);
       this.setState({
         commentData: response.data.results,
         postDataLoading: false,
@@ -78,25 +75,21 @@ class PostList extends Component {
   render() {
     const data = this.state.postData;
     const comments = this.state.commentData;
+    const commentMap = {};
     
     for(var i = 0; i < comments.length; i++) {
       var item = comments[i];
-      
-      if(item.post in this.commentMap) {
-        this.commentMap[item.post].push(item);
+      if(commentMap[item.post]) {
+        commentMap[item.post].push(comments[i]);
       }
       else {
-        this.commentMap[item.post] = [item];
+        commentMap[item.post] = [comments[i]];
       }
     }
 
-    console.log(this.commentMap);
-
     const postList = data.map(
-      item => (<PostCard  key = {item.id} data = {item} comments = {this.commentMap[item.id]}/>)
+      item => (<PostCard  key = {item.id} data = {item} comments = {commentMap[item.id]}/>)
     )
-    
-    
 
     return (
       <BaseLayout>
