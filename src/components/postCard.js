@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { CommentOutlined } from '@ant-design/icons';
 import CardLayout from '../layouts/cardLayout';
-import Comment from './comment';
+import {Comment} from './comment';
 
 class PostCard extends Component {
   constructor(props) {

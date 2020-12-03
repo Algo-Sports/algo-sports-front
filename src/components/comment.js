@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import ReCommentInput from '../forms/reCommentInput';
 import store from '../_helpers/store';
 
+import { connect } from 'react-redux';
 
 class Comment extends Component {
 
@@ -33,6 +34,8 @@ class Comment extends Component {
   }
 
   render() {
+    
+    const {loggedIn, user} = this.props;
     return (
       <div>
         <span style = {{color : this.usernameColor, fontSize: 15}}>
@@ -45,9 +48,12 @@ class Comment extends Component {
 
         <p style = {{color: "#FFFFFF", fontSize: 12}}>
           {this.props.comment.content}
-          <a style ={{paddingLeft: 5, color: "#7095FF"}} onClick = {this.onhandleReComment}>
-            &gt; Reply
-          </a>
+          {
+            loggedIn?
+            <a style ={{paddingLeft: 5, color: "#7095FF"}} onClick = {this.onhandleReComment}>
+              &gt; Reply
+            </a>:""
+          }
         </p>
         {
           this.state.isWritingReCommnt ? 
@@ -59,4 +65,15 @@ class Comment extends Component {
   }
 }
 
-export default Comment;
+
+function mapState(state) {
+  const { authentication } = state;
+  const { loggedIn, user } = authentication;
+  return { loggedIn, user };
+}
+
+const actionCreators = {
+}
+
+const connectedComment = connect(mapState, actionCreators)(Comment);
+export { connectedComment as Comment };
