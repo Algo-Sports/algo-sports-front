@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NoNavLayout from '../layouts/noNavLayout'
 import SignInLayout from '../layouts/signInLayout';
-import { Form, Input, Button} from 'antd';
+import { Form, Input, Button, notification, Alert} from 'antd';
 import styles from '../styles/signin.module.css'
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
@@ -13,6 +13,14 @@ const FormWrapper = styled(Form)`
   text-align: center;
 `;
 
+const openNotification = (message, placement) => {
+  notification.info({
+    message: `Notification ${placement}`,
+    description: message,
+    placement,
+  });
+};
+
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +29,20 @@ class Signup extends Component {
     // this.props.signout();
     
     this.state = {
+      complete: '',
+      status : {
+        username: "success",
+        email: "success",
+        password1: "success",
+        password2: "success",
+      },
+      error: {
+        username: "",
+        email: "",
+        password1: "",
+        password2: "",
+        default: "",
+      },
       username: '',
       email: '',
       password1: '',
@@ -36,39 +58,148 @@ class Signup extends Component {
     this.setState({ [name]: value });
   }
 
-  handleSubmit() {
-    this.setState({ submitted: true });
+  async handleSubmit() {
+    this.setState({
+      ...this.state,
+      submitted: true,
+      status : {
+        username: "success",
+        email: "success",
+        password1: "success",
+        password2: "success",
+      },
+      error: {
+        username: "",
+        email: "",
+        password1: "",
+        password2: "",
+        default: "",
+      },
+    });
     
     const { username, email, password1, password2} = this.state;
+    const { alert, message } = this.props;
+
     if ( username && email && password1 && password2) {
       if(password1 === password2) {
-        const response = this.props.signup(username, email, password1, password2);
-        console.log(response);
+        await this.props.signup(username, email, password1, password2);
+        if(alert) {
+          if(alert.type!== "undefined" && alert.type === "alert-success") {
+            this.setState({
+              complete: true,            
+              submitted : true,
+            })
+            return;
+          }
+          this.setState({
+            ...this.state,
+            submitted : false,
+          })
+          try {
+            if(message.non_field_errors!== "undefined" && message.non_field_errors) {
+              this.setState({
+                ...this.state,
+                status: {
+                  ...this.state.status,
+                  password1: "error",
+                },
+                error: {
+                  ...this.state.error,
+                  password1: message.non_field_errors[0],
+                }
+              })
+            }
+    
+            if(message.email!== "undefined" && message.email) {
+              this.setState({
+                ...this.state,
+                status: {
+                  ...this.state.status,
+                  email: "error",
+                },
+                error: {
+                  ...this.state.error,
+                  email: message.email[0],
+                }
+              })
+            }
+
+            if(message.username!== "undefined" && message.username) {
+              this.setState({
+                ...this.state,
+                status: {
+                  ...this.state.status,
+                  username: "error",
+                },
+                error: {
+                  ...this.state.error,
+                  username: message.username[0],
+                }
+              })
+            }
+          }
+          catch {
+            this.setState({
+              ...this.state,
+              status: {
+                ...this.state.status,
+                password: "error",
+              },
+              error: {
+                ...this.state.error,
+                password: "알 수 없는 오류가 발생하였습니다."
+              }
+            })
+          }
+  
+          
+        }
+      }
+      else {
+        this.setState({
+          ...this.state,
+          submitted : false,
+          status: {
+            ...this.state.status,
+            password2: "error",
+          },
+          error: {
+            ...this.state.error,
+            password2: "비밀번호가 다릅니다."
+          }
+        })
       }
     }
   }
 
   render() {
-    const {loggedIn} = this.props;
-    const { username, email, password1, password2, submitted } = this.state;
-
+    const {loggedIn, message } = this.props;
+    const { username, email, password1, password2, submitted, complete } = this.state;
+    
     return (
       loggedIn?
       <Redirect to = "/"/>:
       <NoNavLayout>
         <SignInLayout>
-          <div className={styles.logo}>
-            <img
-              src="/logo.png"
-              style={{ padding: 5 }}
-              alt="logo"
-            />
-          </div>
+          <Link to = "/">
+            <div className={styles.logo}>
+              <img
+                src="/logo.png"
+                style={{ padding: 5 }}
+                alt="logo"
+              />
+            </div>
+          </Link>
+          
           <FormWrapper
             name = "form"
             onFinish = {this.handleSubmit}
           >
-            <Form.Item label="유저명">
+            <Form.Item
+              label="유저명"
+              validatestatus = {this.state.status.username}
+              help = {this.state.error.username}
+            >
               <Input
                 name="username"
                 placeholder="유저명"
@@ -76,7 +207,11 @@ class Signup extends Component {
                 value={username}
                 onChange={this.handleChange} />
             </Form.Item>
-            <Form.Item label="이메일">
+            <Form.Item
+              label="이메일"
+              validatestatus = {this.state.status.email}
+              help = {this.state.error.email}
+            >
               <Input
                 name="email"
                 placeholder="이메일"
@@ -84,7 +219,11 @@ class Signup extends Component {
                 value={email}
                 onChange={this.handleChange} />
             </Form.Item>
-            <Form.Item label="비밀번호">
+            <Form.Item
+              label="비밀번호"
+              validatestatus = {this.state.status.password1}
+              help = {this.state.error.password1}
+            >
               <Input placeholder="비밀번호"
                 type="password"
                 name="password1"
@@ -93,7 +232,11 @@ class Signup extends Component {
                 onChange={this.handleChange}
               />
             </Form.Item>
-            <Form.Item label="비밀번호 확인">
+            <Form.Item
+              label="비밀번호 확인"
+              validatestatus = {this.state.status.password2}
+              help = {this.state.error.password2}
+            >
               <Input placeholder="비밀번호 확인"
                 type="password"
                 name="password2"
@@ -108,13 +251,24 @@ class Signup extends Component {
                   disabled={submitted}
                   htmlType="submit"> 회원가입 </Button>
             </Form.Item>
-
+            {complete?
+            <Alert
+                message = {message}
+                type="success"
+                showIcon
+                action={
+                  <Button size="small" type="text">
+                    UNDO
+                  </Button>
+                }
+                closable
+              /> : <></>
+            }
             <hr />
             <Form.Item>
               <Link to="/signin">로그인</Link><br />
               <Link to="#">Sign up using Github</Link>
             </Form.Item>
-
           </FormWrapper>
         </SignInLayout>
       </NoNavLayout>
@@ -124,7 +278,9 @@ class Signup extends Component {
 
 function mapState(state) {
   const { loggedIn } = state.authentication;
-  return { loggedIn };
+  const { alert } = state;
+  const {message} = alert;
+  return { loggedIn, alert, message };
 }
 
 const actionCreators = {
