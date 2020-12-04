@@ -13,7 +13,9 @@ import {Provider} from 'react-redux';
 import store from './_helpers/store';
 import {history} from './_helpers/history';
 import NotFoundPage from './pages/NotFoundPage';
-
+import { pdfjs } from 'react-pdf';
+import { ModalWrapper } from './components/ModalWrapper';
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 ReactDOM.render(
   <React.StrictMode>
@@ -31,6 +33,7 @@ ReactDOM.render(
           <Route key = "/signup" path = "/signup" component = {Signup}/>
           <Route key = "404" path = "/*" component = {NotFoundPage}/>
         </Switch>
+        <ModalWrapper></ModalWrapper>
       </Router>
     </Provider>  
   </React.StrictMode>,
