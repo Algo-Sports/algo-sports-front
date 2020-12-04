@@ -10,7 +10,7 @@ class GameDescription extends Component {
                     {this.props.game.game_name}
                 </h2>
                 <hr/>
-                <PdfViewer filename = {"/test.pdf"} />
+                <PdfViewer filename = {"/laysor.pdf"} />
             </div>
         )
     }
