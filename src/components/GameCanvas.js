@@ -28,7 +28,7 @@ export default class GameCanvas extends Component {
 
   render() {
     return (
-        <canvas ref={this.canvasRef} />
+        <canvas className = "game-canvas" ref={this.canvasRef} />
     )
   }
 }

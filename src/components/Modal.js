@@ -7,7 +7,7 @@ class Modal extends Component {
       return null;
     }
     return (
-      <div>
+      <div className = "height-100" style = {{margin: "0 auto 0 auto", padding: "2% 0 2% 0"}}>
         {this.props.children}
       </div>
     )
