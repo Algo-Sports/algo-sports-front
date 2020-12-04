@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Tabs } from 'antd';
 import GameDescription from './gameDescription';
 import GameRanking from './gameRanking';
-import GameResultTable from './gameResultTable'
+import {GameResultTable} from './gameResultTable'
 const { TabPane } = Tabs;
 
 class GameDetail extends Component {

@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { Table } from 'antd';
+import { Button, Table } from 'antd';
+import { connect } from 'react-redux';
+import { modalActions } from '../_actions/modal.action';
+import Modal from './Modal';
+import Banner from './banner';
 
 class GameResultTable extends Component {
   state = {
@@ -13,10 +17,23 @@ class GameResultTable extends Component {
 
   constructor(props) {
     super(props);
-    this.state.data = this.props.result;
+  }
+
+  tt = (
+    <p>
+      this is test modal
+    </p>
+  )
+  
+  handleModal(element) {
+    this.props.showModal(element);
   }
 
   componentDidMount() {
+    this.setState({
+      ...this.state,
+      data: this.props.result,
+    })
   }
 
   render() {
@@ -59,17 +76,33 @@ class GameResultTable extends Component {
     ];
 
     return (
-      <Table
-        columns={columns}
-        rowKey={ranking => ranking.username}
-        dataSource={data}
-        loading={loading}
-        onChange={this.handleTableChange}
-        showSorterTooltip={false}
-        className={"rankingTable"}
-      />
+      <>
+        <Table
+          columns={columns}
+          rowKey={ranking => ranking.username}
+          dataSource={data}
+          loading={loading}
+          onChange={this.handleTableChange}
+          showSorterTooltip={false}
+          className={"rankingTable"}
+        />
+        {this.tt}
+        <button onClick = {() => {this.handleModal(this.tt)}}>
+          test
+        </button>
+      </>
     )
   }
 }
 
-export default GameResultTable;
+function mapState(state) {
+  const { show, element } = state.modal;
+  return { show, element };
+}
+
+const actionCreators = {
+  showModal: modalActions.showModal,
+};
+
+const connectedGameResultTable = connect(mapState, actionCreators)(GameResultTable);
+export { connectedGameResultTable as GameResultTable };
