@@ -1,0 +1,22 @@
+.logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo img {
+    width: 30%;
+}
+
+.submitButton {
+    background-color: #1F263B;
+    border: none;
+    color: white;
+}
+
+.submitButton:hover {
+    background-color: #323d5f;
+    color: rgb(150, 161, 199);
+    transition: 1s;
+    transform-origin: 0% 0%;
+}
