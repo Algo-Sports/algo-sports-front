@@ -12,32 +12,17 @@ class PdfViewer extends Component {
   }
 
   render() {
-    const { pageNumber, numPages } = this.state;
+    const { numPages } = this.state;
     return (
       <div>
         <Document
-          size="A4"
           file={this.props.filename}
-          onLoadSuccess={this.onDocumentLoadSuccess}>
-          <Page pageNumber={pageNumber} wrap={false}/>
+          onLoadSuccess={this.onDocumentLoadSuccess}
+        >
+          {Array.apply(null, Array(numPages))
+            .map((x, i) => i + 1)
+            .map(page => <Page pageNumber={page} />)}
         </Document>
-        <p>
-         <button onClick={() => pageNumber > 1 ?
-            this.setState({
-              numPages: numPages,
-              pageNumber: pageNumber - 1
-            }) : null}>
-            &lt;
-         </button>
-          <span>Page {pageNumber} of {numPages}</span>
-         <button onClick={() => pageNumber < numPages ?
-            this.setState({
-              numPages: numPages,
-              pageNumber: pageNumber + 1
-            }) : null}>
-            &gt;
-         </button>
-        </p>
       </div>
     )
   }

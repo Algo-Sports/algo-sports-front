@@ -132,3 +132,13 @@ canvas.game-canvas{
 div[role=alert] {
   color: rgb(255, 117, 150);
 }
+
+.react-pdf__Page__canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.react-pdf__Page__textContent {
+  width: 100% !important;
+  height: auto !important;
+}
