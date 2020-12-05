@@ -30,7 +30,7 @@ const columns = [
   },
   {
     title: "",
-    dataIndex: "currentUser",
+    dataIndex: "user_cnt",
     width: '10%',
     render: (count, row) => (
       <Link to={"/game/user/" + row.id} style={{ color: "#7095FF", textDecoration: "underline" }}>
@@ -69,7 +69,7 @@ class OnGoingGameTable extends Component {
   }
 
   render() {
-    const { data, loading } = this.state;
+    const { loading } = this.state;
 
     return (
       <div style={{ backgroundColor: "#1F263B", boxShadow: "3px 3px 10px #000000", margin: "50px 0 50px 0", padding: "20px" }}>
@@ -79,7 +79,7 @@ class OnGoingGameTable extends Component {
         <Table
           columns={columns}
           rowKey={ranking => ranking.username}
-          dataSource={data}
+          dataSource={this.data}
           loading={loading}
           onChange={this.handleTableChange}
           showSorterTooltip={false}

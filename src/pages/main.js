@@ -24,7 +24,7 @@ export class Main extends Component {
                 {
                     "title": game["name"],
                     "description": game["description"],
-                    "date": game["endDate"],
+                    "date": "~ "+game["end"],
                 }
             )
         });

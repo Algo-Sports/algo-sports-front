@@ -4,13 +4,14 @@ import PdfViewer from './pdfViewer'
 class GameDescription extends Component {
 
     render() {
+        const {game} = this.props;
         return (
             <div className = {"game-description-container"}>
                 <h2>
-                    {this.props.game.game_name}
+                    {game.game_name}
                 </h2>
                 <hr/>
-                <PdfViewer filename = {"/laysor.pdf"} />
+                <PdfViewer filename = {game.game_content} />
             </div>
         )
     }
