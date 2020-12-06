@@ -1,34 +1,55 @@
 export const onGoingGame = [
     {
-        "name" : "AAAA Game",
-        "description" : "Where is A? Find them!",
-        "endDate" : "2020.12.31 17:00"
+        id : 4,
+        name : "레이저 게임(2)",
+        creator : "singun11",
+        description : "가장 많이 공을 맞춰보세요!",
+        start : "2020.11.11 23:35",
+        end : "2020.12.12 01:35",
+        user_cnt: 1100,
+        users : [],
     },
     {
-        "name": "BBBB Game",
-        "description" : "Where is B? Find them!",
-        "endDate" : "2020.12.31 17:00"
+        id : 5,
+        name: "땅따먹기 게임(3)",
+        creator : "singun11",
+        description : "도형을 배치하고, 제일 많은 영역을 차지하게요!",
+        start : "2020.11.11 23:35",
+        end : "2020.12.12 01:35",
+        user_cnt: 900,
+        users : [],
+    },
+]
+
+export const pastGame = [
+    {
+        id : 1,
+        name : "레이저 게임(1)",
+        creator : "singun11",
+        description : "가장 많이 공을 맞춰보세요!",
+        "start": "2020.11.11 23:35",
+        "end": "2020.11.12 01:35",
+        user_cnt: 1100,
     },
     {
-        "name": "BBBB Game",
-        "description" : "Where is B? Find them!",
-        "endDate" : "2020.12.31 17:00"
+        id : 2,
+        name: "땅따먹기 게임(1)",
+        creator : "singun11",
+        description : "도형을 배치하고, 제일 많은 영역을 차지하게요!",
+        "start": "2020.11.11 23:35",
+        "end": "2020.11.12 01:35",
+        user_cnt: 1100,
     },
+    
     {
-        "name": "BBBB Game",
-        "description" : "Where is B? Find them!",
-        "endDate" : "2020.12.31 17:00"
+        id : 3,
+        name: "땅따먹기 게임(2)",
+        creator : "singun11",
+        description : "도형을 배치하고, 제일 많은 영역을 차지하게요!",
+        "start": "2020.11.11 23:35",
+        "end": "2020.11.12 01:35",
+        user_cnt: 1100,
     },
-    {
-        "name": "BBBB Game",
-        "description" : "Where is B? Find them!",
-        "endDate" : "2020.12.31 17:00"
-    },
-    {
-        "name": "BBBB Game",
-        "description" : "Where is B? Find them!",
-        "endDate" : "2020.12.31 17:00"
-    }
 ]
 
 
@@ -101,80 +122,4 @@ export const rankingData = [
         "comment" : "Hello",
         "score" : 900,
     },
-]
-
-
-
-export const postData = [
-    {
-        'title' : 'ROUND #101',
-        'id': 1,
-        'username': 'singun11',
-        'created_at': '2021.01.01 11:20',
-        'content' : `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-        'like': 164,
-    },
-    {
-        'title' : 'ROUND #102',
-        'id': 2,
-        'username': 'singun19',
-        'created_at': '2021.01.03 11:20',
-        'content' : `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
-        'like': 50,
-    },
-]
-
-
-export const commentData = [
-    {
-        'post_id' : 1,
-        'comment_id' : 1,
-        'user_id': 1,
-        'username': 'singun11',
-        'parent_id' : null,
-        'content': 'Wow! 멋져요!',
-        'created_at': '2021.01.03 11:20',
-        'deleted': false,
-    },
-    {
-        'post_id' : 1,
-        'comment_id' : 2,
-        'user_id': 1,
-        'username': 'singun11',
-        'parent_id' : 1,
-        'content': '정말 멋지네요!',
-        'created_at': '2021.01.04 11:20',
-        'deleted': false,
-    },
-    {
-        'post_id' : 1,
-        'comment_id' : 3,
-        'user_id': 1,
-        'username': 'singun11',
-        'parent_id' : null,
-        'content': '이건 삭제된 댓글이에요.!',
-        'created_at': '2021.01.05 11:20',
-        'deleted': true,
-    },
-    {
-        'post_id' : 1,
-        'comment_id' : 4,
-        'user_id': 1,
-        'username': 'singun11',
-        'parent_id' : 1,
-        'content': '2번째 멋져요!',
-        'created_at': '2021.01.06 11:20',
-        'deleted': false,
-    },
-    {
-        'post_id' : 2,
-        'comment_id' : 5,
-        'user_id': 1,
-        'username': 'singun11',
-        'parent_id' : null,
-        'content': '이번 라운드는 어려워요!',
-        'created_at': '2021.01.03 11:20',
-        'deleted': false,
-    },  
-
 ]

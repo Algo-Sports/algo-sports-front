@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
 import GameContentLayout from '../layouts/gameContentLayout';
 
-const game = {
-  game_id: null,
-  game_name: "aaa game",
-  game_content: `Lorem Ipsum asdaarewgew  rABSKJDVSAFDSAJDFSAKD alshdas;lkdas;dakjs das.,nda jdaslkdbas ,
-  masdlh salka Lorem Ipsum asdaarewgewrABSKJDVSAFDSAJDFSAKD alshdas;lkdas;dakjs das.,nda jdaslkdbas ,masdlh salk
-  a Lorem Ipsum asdaarewgew  rABSKJDVSAFDSAJDFSAKD alshdas;lkdas;dakjs das.,nda jdaslkdbas ,masdlh salka`,
-  game_summary: "Lorem Ipsum asdaarewgew  rABSKJDVSAFDSAJDFSAKD alshdas;lkdas;dakjs das.,nda jdaslkdbas ,masdlh salka"
-
-};
+import {onGoingGame, pastGame} from '../data/data';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const rankingList = [
   {
@@ -38,14 +32,34 @@ class Game extends Component {
   }
 
   render() {
+    const {loggedIn} = this.props;
     const { params } = this.props.match;
 
-    game.game_id = params.game_id;
+    const game = {
+      game_id: params.game_id,
+      game_name: "레이저 게임(2)",
+      game_content: "/laysor.pdf",
+      game_summary: "가장 많이 공을 맞춰보세요!"
+    
+    };
 
     return (
-      this.state.ingame ? <></> :
-        <GameContentLayout game= {game} ranking = {rankingList}/>
+      loggedIn ? (
+        this.state.ingame ? <></> :
+          <GameContentLayout game= {game} ranking = {rankingList}/>
+      )
+      :<Redirect to = "/signin"/>
     )
   }
 }
-export default Game;
+
+function mapState(state) {
+  const { loggedIn } = state.authentication;
+  return { loggedIn };
+}
+
+const actionCreators = {
+};
+
+const connectedGame = connect(mapState, actionCreators)(Game);
+export { connectedGame as Game };
