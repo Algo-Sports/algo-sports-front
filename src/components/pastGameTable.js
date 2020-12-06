@@ -30,7 +30,7 @@ const columns = [
   },
   {
     title: "",
-    dataIndex: "currentUser",
+    dataIndex: "user_cnt",
     width: '10%',
     render: (count, row) => (
       <Link  to = {"/game/user/"+row.id} style={{color:"#7095FF", textDecoration:"underline"}}>

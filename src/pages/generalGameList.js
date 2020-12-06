@@ -13,12 +13,13 @@ class GeneralGameList extends Component {
   }
 
   render() {
+    const {loggedIn} = this.props;
     return (
       <GameListLayout title="General Game" subTitle="Compete with People, But is not rated" >
         <Row gutter={[8, 0]}>
           <Col lg={{ span: 2 }} />
           <Col lg={{ span: 20 }}>
-            <OnGoingGameTable category="general" data = {this.onGoingGame} />
+            <OnGoingGameTable category="general" data = {this.onGoingGame} loggedIn = {loggedIn}/>
           </Col>
           <Col lg={{ span: 2 }} />
         </Row>
