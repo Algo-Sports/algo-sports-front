@@ -8,11 +8,31 @@ class NotFoundPage extends Component {
   render() {
     return (
       <BaseLayout>
-        <Banner title = "404" subtitle = "Oopes, PAGE NOT FOUND" message = "we could find page you're looking for"/>
-        <div className = "height-90">
-          <Link to = "/">
-            &gt; 메인화면으로 돌아가기
-          </Link>
+      
+        <div style={{backgroundColor:"#1F263B", height:"600px", width: "100%"}}>
+          <Row className = "height-100">
+            <Col lg = {{span: 2}} md = {{span: 1}} sm = {{span: 1}} xs ={{span : 1}}/>
+            <Col lg = {{span: 20}}  md = {{span: 22}} sm = {{span: 22}} xs ={{span : 22}} 
+              style = {{padding: "200px 0 0 0", textAlign: "center"}} 
+              lassName = "height-100"
+            >
+              <h2 style={{fontSize:30,lineHeight:"30px"}}>
+                Oopes, PAGE NOT FOUND
+              </h2>
+              <h1 style={{fontSize:60,lineHeight:"60px"}}>
+                404
+              </h1>
+              <h3 style={{fontSize:20, color:"#465580" ,lineHeight:"20px"}}>
+                we could find page you're looking for
+                <br/>
+                <br/>
+                <Link to = "/">
+                  &gt; 메인화면으로 돌아가기
+                </Link>
+              </h3>
+            </Col>
+            <Col lg = {{span: 2}} md = {{span: 1}} sm = {{span: 1}} xs ={{span : 1}}/>
+          </Row>
         </div>
       </BaseLayout>
     )
