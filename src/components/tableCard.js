@@ -13,7 +13,7 @@ class TableCard extends Component {
             <Col 
               lg = {{span : 6}} md = {{span : 24}} sm = {{span : 24}} xs = {{span : 24}} 
               style ={{fontSize: "20px", color: "white", lineHeight: "20px"}}
-              className = "padding-5">
+              className = "padding-5">  
               {data["title"]}
             </Col>
             : <></>
