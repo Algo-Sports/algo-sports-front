@@ -13,11 +13,10 @@ class GameContentLayout extends Component {
   }
   
   componentDidMount() {
-    this.setState({game: this.props.game });
-    this.setState({rankingList: this.props.ranking });
   }
 
   render() {
+    const {game, ranking, gameResult} = this.props;
     return (
       <>
         <nav className = "game-detail-nav">
@@ -28,15 +27,15 @@ class GameContentLayout extends Component {
           </Link>
         </nav>
           <Row className = "padding-20" style = {{minHeight: "90%"}}>
-            <Col lg={{ span: 1 }} md={{ span: 1 }} sm={{ span: 1 }} xs={{ span: 1 }} />
-              <Col lg={{ span: 11 }} md={{ span: 11 }} sm={{ span: 22 }} xs={{ span: 22 }} className = "outer-card-layout">
-                <GameDetail game = {this.props.game} ranking = {this.props.ranking} gameResult = {this.props.gameResult}/>
+            <Col lg={{ span: 0 }} md={{ span: 0 }} sm={{ span: 1 }} xs={{ span: 1 }} />
+              <Col lg={{ span: 12 }} md={{ span: 12 }} sm={{ span: 22 }} xs={{ span: 22 }} className = "outer-card-layout">
+                <GameDetail game = {game} ranking = {ranking} gameResult = {gameResult}/>
               </Col>
               <Col lg={{ span: 0 }} md={{ span: 0 }} sm={{ span: 1 }} xs={{ span: 1 }} />
-              <Col lg={{ span: 11}} md={{ span: 11 }} sm={{ span: 22 }} xs={{ span: 22 }} className = "outer-card-layout">
+              <Col lg={{ span: 12}} md={{ span: 12 }} sm={{ span: 22 }} xs={{ span: 22 }} className = "outer-card-layout">
                 <CodeInputCard code = {this.state.code}/>
               </Col>
-            <Col lg={{ span: 1 }} md={{ span: 1 }} sm={{ span: 1 }} xs={{ span: 1 }} />
+            <Col lg={{ span: 0 }} md={{ span: 0 }} sm={{ span: 1 }} xs={{ span: 1 }} />
           </Row>
       </>
     )

@@ -75,6 +75,14 @@ body > div, body > div > section{
   background-color: none;
 }
 
+canvas.game-canvas{ 
+  position: relative;
+  top:50%;
+  transform: translate(0, -50%);
+  right:0;
+  left:0; 
+} 
+
 .outer-card-layout {
   padding: 20px;
   background-color: #1F263B;
@@ -123,4 +131,14 @@ body > div, body > div > section{
 
 div[role=alert] {
   color: rgb(255, 117, 150);
+}
+
+.react-pdf__Page__canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.react-pdf__Page__textContent {
+  width: 100% !important;
+  height: auto !important;
 }

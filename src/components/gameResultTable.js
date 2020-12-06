@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { modalActions } from '../_actions/modal.action';
 import Modal from './Modal';
 import Banner from './banner';
+import CanvasLayout from '../layouts/CanvasLayout';
+import GameCanvas from '../components/GameCanvas';
 
 class GameResultTable extends Component {
   state = {
@@ -17,13 +19,11 @@ class GameResultTable extends Component {
 
   constructor(props) {
     super(props);
+    this.tt = (
+      <></>
+    )
   }
 
-  tt = (
-    <p>
-      this is test modal
-    </p>
-  )
   
   handleModal(element) {
     this.props.showModal(element);
@@ -34,6 +34,12 @@ class GameResultTable extends Component {
       ...this.state,
       data: this.props.result,
     })
+    this.tt = (
+      <CanvasLayout>
+        <GameCanvas canvaswidth = "1000" canvasheight = "800" start = {true}>
+        </GameCanvas>
+      </CanvasLayout>
+    )
   }
 
   render() {
@@ -86,7 +92,6 @@ class GameResultTable extends Component {
           showSorterTooltip={false}
           className={"rankingTable"}
         />
-        {this.tt}
         <button onClick = {() => {this.handleModal(this.tt)}}>
           test
         </button>
