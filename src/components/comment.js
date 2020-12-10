@@ -38,19 +38,26 @@ class Comment extends Component {
     const {loggedIn, user} = this.props;
     return (
       <div>
-        <span style = {{color : this.usernameColor, fontSize: 15}}>
-            {this.props.comment.user.username}
+        <span 
+          className = "font-15"
+          style = {{color : this.usernameColor}}>
+          {this.props.comment.user.username}
         </span>
         
-        <span style = {{color: "#465580", fontSize: 10, paddingLeft: 5}}>
-            {this.props.comment.updated_at}
+        <span 
+          className = "font-light-dark-blue font-10"
+          style = {{paddingLeft: 5}}>
+          {this.props.comment.updated_at}
         </span>
 
-        <p style = {{color: "#FFFFFF", fontSize: 12}}>
+        <p
+          className = "font-white font-15 font-content">
           {this.props.comment.content}
           {
             loggedIn?
-            <a style ={{paddingLeft: 5, color: "#7095FF"}} onClick = {this.onhandleReComment}>
+            <a 
+              className = "font-light-blue"
+              style ={{paddingLeft: 5}} onClick = {this.onhandleReComment}>
               &gt; Reply
             </a>:""
           }

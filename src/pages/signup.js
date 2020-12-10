@@ -177,7 +177,7 @@ class Signup extends Component {
             <div className={styles.logo}>
               <img
                 src="/logo.png"
-                style={{ padding: 5 }}
+                className = "padding-5"
                 alt="logo"
               />
             </div>
@@ -194,6 +194,7 @@ class Signup extends Component {
             >
               <Input
                 name="username"
+                className = "font-content"
                 placeholder="유저명"
                 required
                 value={username}
@@ -206,6 +207,7 @@ class Signup extends Component {
             >
               <Input
                 name="email"
+                className = "font-content"
                 placeholder="이메일"
                 required
                 value={email}
