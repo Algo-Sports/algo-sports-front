@@ -10,7 +10,10 @@ class TableCard extends Component {
       return (
         <Row key = {index} style={{padding: 20}}>
           {data["title"] ?
-            <Col lg = {{span : 6}} style ={{fontSize: "20px", color: "white", lineHeight: "20px"}}>
+            <Col 
+              lg = {{span : 6}} md = {{span : 24}} sm = {{span : 24}} xs = {{span : 24}} 
+              style ={{fontSize: "20px", color: "white", lineHeight: "20px"}}
+              className = "padding-5">  
               {data["title"]}
             </Col>
             : <></>
@@ -18,7 +21,8 @@ class TableCard extends Component {
 
           {
             data["description"] ?
-              <Col lg = {data["title"] ?{span : 12} : {span: 18}} style ={{fontSize: "15px", color: "white"}}>
+              <Col lg = {data["title"] ? {span : 12} : {span: 18}}  md = {{span : 24}} sm = {{span : 18}} xs = {{span : 18}} style ={{fontSize: "15px", color: "white"}}
+              className = "padding-5">
                 {data["description"]}
               </Col>
             : <></>
@@ -26,7 +30,8 @@ class TableCard extends Component {
 
           {
             data["date"] ?
-            <Col lg = {{span : 6}} style ={{fontSize: "13px", color: "#FF7596"}}>
+            <Col lg = {{span : 6}}  md = {{span : 24}} sm = {{span : 6}} xs = {{span : 6}} style ={{fontSize: "13px", color: "#FF7596"}}
+            className = "padding-5">
               {data["date"]}
             </Col>
             : <></>

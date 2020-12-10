@@ -11,18 +11,14 @@ class GameListLayout extends Component {
     render() {
         return (
             <div>
-                <Row style={{height: 200, backgroundColor: "#465580", paddingTop: "50px"}}>
-                <Col lg = {{span: 8}}/>
-                <Col lg = {{span: 8}}>
+                <div style={{height: 200, backgroundColor: "#465580", paddingTop: "50px"}}>
                     <h1 style={{fontSize:30,lineHeight:"30px", textAlign:"center"}}>
                     {this.props.title}
                     </h1>
                     <h2 style={{fontSize:20,lineHeight:"20px", textAlign:"center"}}>
                     {this.props.subTitle}
                     </h2>
-                </Col>
-                <Col lg = {{span: 8}}/>
-                </Row>
+                </div>
                 {this.props.children}            
             </div>
         )
