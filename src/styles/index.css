@@ -234,3 +234,7 @@ div[role=alert] {
   width: 100% !important;
   height: auto !important;
 }
+
+.radarchart .recharts-layer text.recharts-polar-angle-axis-tick-value > tspan {
+  fill: rgb(177, 173, 204);
+}
