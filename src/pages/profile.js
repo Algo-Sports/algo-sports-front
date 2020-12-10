@@ -4,15 +4,12 @@ import Banner from '../components/banner';
 import ExperienceChart from '../components/experienceChart';
 import WinningRateChart from '../components/winningRateChart';
 import { Row, Col } from 'antd';
+import { connect } from 'react-redux';
+import {Redirect} from 'react-router-dom';
 
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.user = {
-      "id": 1,
-      "username": "singun11",
-      "comment": "Hello, Everyone",
-    }
 
     this.experienceData = [
       {
@@ -84,10 +81,18 @@ class Profile extends Component {
       },
     ];
   }
+
   render() {
+    const {loggedIn, user} = this.props;
+    
+    if(!loggedIn) {
+      return (
+        <Redirect to = "/signin"/>
+      )
+    }
     return (
       <BaseLayout>
-        <Banner title={this.user.username} subtitle="Hello," message={this.user.comment} />
+        <Banner title={user.user.username} subtitle="Hello," message={user.user.email} />
         <Row style = {{padding: 20}}>
           <Col xs = {1} md = {2} lg = {2}/>
           <Col xs={22} md={20} lg={20}>
@@ -106,4 +111,14 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+function mapState(state) {
+  const { authentication } = state;
+  const { loggedIn, user } = authentication;
+  return { loggedIn, user };
+}
+
+const actionCreators = {
+}
+
+const connectedProfile = connect(mapState, actionCreators)(Profile);
+export { connectedProfile as Profile };
