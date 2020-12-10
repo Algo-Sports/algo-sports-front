@@ -33,7 +33,9 @@ const columns = [
     dataIndex: "user_cnt",
     width: '10%',
     render: (count, row) => (
-      <Link  to = {"/game/user/"+row.id} style={{color:"#7095FF", textDecoration:"underline"}}>
+      <Link 
+        to = {"/game/user/"+row.id}
+        className = "font-light-blue text-underline">
         {count}
       </Link>
     )
@@ -43,7 +45,9 @@ const columns = [
     dataIndex: "id",
     width: '10%',
     render: id => (
-      <Link to = {"/game/result/"+id}  style={{color:"#FF7596", textDecoration:"underline"}}>
+      <Link
+        to = {"/game/result/"+id}
+        className = "text-underline font-light-red">
         Ranking
       </Link>
     )
@@ -98,7 +102,9 @@ class PastGameTable extends Component {
           dataIndex: "currentUser",
           width: '10%',
           render: (count, row) => (
-            <Link  to = {"/game/user/"+row.id} style={{color:"#7095FF", textDecoration:"underline"}}>
+            <Link
+              to = {"/game/user/"+row.id}
+              className = "font-light-blue text-underline">
               {count}
             </Link>
           )

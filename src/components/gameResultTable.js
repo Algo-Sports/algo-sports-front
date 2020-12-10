@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { Button, Table } from 'antd';
+import { Table } from 'antd';
 import { connect } from 'react-redux';
 import { modalActions } from '../_actions/modal.action';
-import Modal from './Modal';
-import Banner from './banner';
 import CanvasLayout from '../layouts/CanvasLayout';
 import GameCanvas from '../components/GameCanvas';
 

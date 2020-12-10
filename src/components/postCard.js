@@ -29,14 +29,19 @@ class PostCard extends Component {
 
     return (
       <CardLayout>
-        <div style={{ padding: 20 }}>
-          <h1 style={{ color: "#FF7596", fontSize: 25, lineHeight: "25px" }}>
+        <div className = "padding-20">
+          <h1
+            className = "font-light-red"
+            style={{ fontSize: 25, lineHeight: "25px" }}>
             {this.data.title}
           </h1>
-          <h3 style={{ color: "#465580", fontSize: 15, lineHeight: "20px" }}>
+          <h3
+            className = "font-light-dark-blue"
+            style={{fontSize: 15, lineHeight: "20px" }}>
             by {this.data.user.username}, {this.data.created_at}
           </h3>
-          <p style={{ color: "#FFFFFF", }}>
+          <p
+            className = "font-black">
             {this.data.content}
           </p>
 

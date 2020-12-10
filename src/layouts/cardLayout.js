@@ -14,8 +14,10 @@ class CardLayout extends Component {
 
   render() {
     return (
-      <div style = {{padding: 20}}>
-        <div style={{backgroundColor: this.backgroundColor, boxShadow: this.boxShadow, padding: 10}}>
+      <div className = "padding-20">
+        <div
+          className = "padding-10" 
+          style={{backgroundColor: this.backgroundColor, boxShadow: this.boxShadow}}>
           {this.props.children}
         </div>
       </div>

@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import GameContentLayout from '../layouts/gameContentLayout';
-
-import {onGoingGame, pastGame} from '../data/data';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 

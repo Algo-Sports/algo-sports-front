@@ -131,7 +131,7 @@ class Signin extends Component {
             <div className={styles.logo}>
               <img
                 src="/logo.png"
-                style={{ padding: 5 }}
+                className = "padding-5"
                 alt = "Logo"
               />
             </div>

@@ -11,8 +11,10 @@ class Award extends Component {
     render() {
         const {award, title} = this.props;
         return (
-            <Col lg = {{span: 6}} md = {{span: 8}} sm = {{span: 12}} xs = {{span: 12}} style = {{textAlign: "center", color: award?"#ffd700":"white"}}>
-                <TrophyOutlined style = {{fontSize: 100}}/><br/>
+            <Col lg = {{span: 6}} md = {{span: 8}} sm = {{span: 12}} xs = {{span: 12}}
+                className = "text-align-center"
+                style = {{color: award?"#ffd700":"white"}}>
+                <TrophyOutlined className = "font-100"/><br/>
                 {title}
             </Col>
         )

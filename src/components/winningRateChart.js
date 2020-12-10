@@ -24,7 +24,7 @@ class WinningRateChart extends PureComponent {
           <PolarAngleAxis dataKey="gamename"/>
           <PolarRadiusAxis />
           <Tooltip />
-          <Label dataKey = "gamename" style = {{color: "white"}}/>
+          <Label dataKey = "gamename" className = "font-white" />
           <Radar dataKey={this.dateKey} stroke="#1F263B" fill={this.fillColor} fillOpacity={0.6} />
         </RadarChart>
       </ResponsiveContainer>

@@ -5,7 +5,7 @@ export default class Banner extends Component {
   
   render() {
     return (
-      <div style={{backgroundColor:"#1F263B", height:"300px", width: "100%"}}>
+      <div className = "dark-bg width-100" style={{height:"300px"}}>
         <Row className = "height-100">
           <Col lg = {{span: 2}} md = {{span: 1}} sm = {{span: 1}} xs ={{span : 1}}/>
           <Col lg = {{span: 20}}  md = {{span: 22}} sm = {{span: 22}} xs ={{span : 22}} 
