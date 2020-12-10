@@ -13,12 +13,13 @@ class PracticeGameList extends Component {
   }
 
   render() {
+    const {loggedIn} = this.props;
     return (
       <GameListLayout title="Practice" subTitle="Practice algo-sports with bot" >
         <Row gutter={[8, 0]}>
           <Col lg={{ span: 2 }} />
           <Col lg={{ span: 20 }}>
-            <OnGoingGameTable category="practice" data = {this.onGoingnGameData} />
+            <OnGoingGameTable category="practice" data = {this.onGoingnGameData} loggedIn = {loggedIn}/>
           </Col>
           <Col lg={{ span: 2 }} />
         </Row>
