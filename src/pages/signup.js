@@ -194,6 +194,7 @@ class Signup extends Component {
             >
               <Input
                 name="username"
+                className = "font-content"
                 placeholder="유저명"
                 required
                 value={username}
@@ -206,6 +207,7 @@ class Signup extends Component {
             >
               <Input
                 name="email"
+                className = "font-content"
                 placeholder="이메일"
                 required
                 value={email}

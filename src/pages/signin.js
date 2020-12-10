@@ -141,25 +141,27 @@ class Signin extends Component {
             onFinish={this.handleSubmit}
           >
             <Form.Item 
-              label="Email"
+              label="이메일"
               validatestatus = {this.state.status.email}
               help = {this.state.error.email}
             >
               <Input
+                className = "font-content"
                 name="email"
-                placeholder="Email"
+                placeholder="이메일"
                 required
                 value={email}
                 onChange={this.handleChange} />
             </Form.Item>
             <Form.Item 
-              label="password"
+              label="비밀번호"
               validatestatus = {this.state.status.password}
               help = {this.state.error.password}
             >
               <Input
+                className = "font-content"
                 type="password"
-                placeholder="password"
+                placeholder="비밀번호"
                 name="password"
                 required
                 value={password}
