@@ -1,4 +1,4 @@
-import { userConstants } from '../_constants';
+import { userConstants, tokenConstants } from '../_constants';
 import { userService } from '../_services';
 import { alertActions } from './';
 import { history } from '../_helpers';
@@ -7,6 +7,7 @@ export const userActions = {
     signin,
     signout,
     signup,
+    refresh_token,
 };
 
 function signin(username, password) {
@@ -55,4 +56,26 @@ function signup(username, email, password1, password2) {
     function request(user) { return { type: userConstants.SIGNUP_REQUEST, user } }
     function success(user) { return { type: userConstants.SIGNUP_SUCCESS, user } }
     function failure(error) { return { type: userConstants.SIGNUP_FAILURE, error } }
+}
+
+function refresh_token(refresh) {
+    return dispatch => {
+        dispatch(request({refresh}));
+
+        userService.refresh_token(refresh)
+            .then(
+                access => { 
+                    dispatch(success(access));
+                },
+                error => {
+                    dispatch(failure(error));
+                    dispatch(alertActions.error(error));
+                }
+            );
+    };
+
+    function request(access) { return { type: tokenConstants.REFRESH_TOKEN_REQUEST, access } }
+    function success(access) { return { type: tokenConstants.REFRESH_TOKEN_SUCCESS, access } }
+    function failure(error) { return { type: tokenConstants.REFRESH_TOKEN_FAILURE, error } }
+    
 }

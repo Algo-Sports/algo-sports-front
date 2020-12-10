@@ -10,22 +10,24 @@ class PostCard extends Component {
     this.comments = this.props.comments || [];
   }
 
-  render() {
-    const commentList = this.comments.map(
+  makeCommentList(comments) {
+    return comments.map(
       comment => (
         <div key = {comment.id}> 
           <Comment comment = {comment}/>
-
+          
           <div className = "reCommentBox" style = {{paddingLeft: 20}}>
-            {comment.recomments.map(
-              reCommentItem => (
-                <Comment comment = {reCommentItem} />
-              )
-            )}
+            {
+              comment.recomments ? this.makeCommentList(comment.recomments) : null
+            }
           </div>
         </div>
       )
     );
+  }
+
+  render() {
+    const commentList = this.makeCommentList(this.comments);
 
     return (
       <CardLayout>
@@ -49,8 +51,8 @@ class PostCard extends Component {
               <CommentOutlined style={{ color: '#78E1D6' }} /> &nbsp;
               Comment
             </h2>
-            {commentList}
             <hr/>
+            {commentList}
 
           </CardLayout>
         </div>

@@ -35,24 +35,24 @@ class Comment extends Component {
 
   render() {
     
-    const {loggedIn, user} = this.props;
+    const {loggedIn, user, comment} = this.props;
     return (
       <div>
         <span 
           className = "font-15"
           style = {{color : this.usernameColor}}>
-          {this.props.comment.user.username}
+          {comment.user.username}
         </span>
         
         <span 
           className = "font-light-dark-blue font-10"
           style = {{paddingLeft: 5}}>
-          {this.props.comment.updated_at}
+          {comment.updated_at}
         </span>
 
         <p
           className = "font-white font-15 font-content">
-          {this.props.comment.content}
+          {comment.content}
           {
             loggedIn?
             <a 
@@ -64,7 +64,7 @@ class Comment extends Component {
         </p>
         {
           this.state.isWritingReCommnt ? 
-          <ReCommentInput user = {this.state.user}/> :
+          <ReCommentInput user = {user} comment_id = {comment.id}/> :
           null
         }
       </div>
