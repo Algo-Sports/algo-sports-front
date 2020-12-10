@@ -16,6 +16,7 @@ class WinningRateChart extends PureComponent {
     return (
       <ResponsiveContainer width = "99%" height = {this.height}>
         <RadarChart
+          className = "radarchart"
           data={this.data} 
           margin={{
             top: 10, right: 0, left: 0, bottom: 0,
