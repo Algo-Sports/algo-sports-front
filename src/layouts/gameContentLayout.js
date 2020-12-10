@@ -10,8 +10,20 @@ class GameContentLayout extends Component {
   state = {
     code : "",
   }
+
+  constructor(props) {
+    super(props);
+    this.handleCode = this.handleCode.bind(this);
+  }
   
   componentDidMount() {
+  }
+
+  handleCode(code) {
+    this.setState({
+      ...this.state,
+      code: code,
+    })
   }
 
   render() {
@@ -36,7 +48,7 @@ class GameContentLayout extends Component {
               <Col
                 lg={{ span: 12}} md={{ span: 12 }} sm={{ span: 22 }} xs={{ span: 22 }}
                 className = "outer-card-layout">
-                <CodeInputCard code = {this.state.code}/>
+                <CodeInputCard code = {this.state.code} setCode = {this.handleCode}/>
               </Col>
             <Col lg={{ span: 0 }} md={{ span: 0 }} sm={{ span: 1 }} xs={{ span: 1 }} />
           </Row>
