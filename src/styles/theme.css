@@ -1,0 +1,31 @@
+.font-white {
+    color: #FFFFFF;
+}
+
+.font-black {
+    color: #000000;
+}
+
+.font-light-blue {
+    color: #7095FF;
+}
+
+.font-light-dark-blue {
+    color: #465580;
+}
+
+.font-light-red {
+    color: #FF7596;
+}
+
+.dark-bg {
+    background-color: #1F263B;
+}
+
+.light-dark-bg {
+    background-color: #2D3247;
+}
+
+.light-dark-blue-bg {
+    background-color: #465580;   
+}

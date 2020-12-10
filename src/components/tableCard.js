@@ -8,9 +8,11 @@ class TableCard extends Component {
     this.data = this.props.data;
     this.dataComponet = this.data.map((data, index) => {
       return (
-        <Row key = {index} style={{padding: 20}}>
+        <Row key = {index} className = "padding-20">
           {data["title"] ?
-            <Col lg = {{span : 6}} style ={{fontSize: "20px", color: "white", lineHeight: "20px"}}>
+            <Col
+              lg = {{span : 6}} md = {{span : 24}} sm = {{span : 24}} xs = {{span : 24}} 
+              className = "padding-5 font-white font-20 line-height-20">  
               {data["title"]}
             </Col>
             : <></>
@@ -18,7 +20,8 @@ class TableCard extends Component {
 
           {
             data["description"] ?
-              <Col lg = {data["title"] ?{span : 12} : {span: 18}} style ={{fontSize: "15px", color: "white"}}>
+              <Col lg = {data["title"] ? {span : 12} : {span: 18}}  md = {{span : 24}} sm = {{span : 18}} xs = {{span : 18}}
+              className = "padding-5 font-white font-15">
                 {data["description"]}
               </Col>
             : <></>
@@ -26,7 +29,9 @@ class TableCard extends Component {
 
           {
             data["date"] ?
-            <Col lg = {{span : 6}} style ={{fontSize: "13px", color: "#FF7596"}}>
+            <Col
+              lg = {{span : 6}}  md = {{span : 24}} sm = {{span : 6}} xs = {{span : 6}}
+              className = "padding-5 font-13 font-light-red">
               {data["date"]}
             </Col>
             : <></>
@@ -41,7 +46,8 @@ class TableCard extends Component {
   render() {
     return (
       <div style={{paddingTop: 20}}>
-        <h1 style={{ fontSize: 20, textDecoration: "underline" }}>
+        <h1
+          className = "font-20 text-underline">
           {this.tableTitle}
         </h1>
         <div className = "outer-card-layout-padding-10" style={{ boxShadow:"0px 3px 5px #000000",}}>

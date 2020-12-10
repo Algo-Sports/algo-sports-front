@@ -16,6 +16,7 @@ class WinningRateChart extends PureComponent {
     return (
       <ResponsiveContainer width = "99%" height = {this.height}>
         <RadarChart
+          className = "radarchart"
           data={this.data} 
           margin={{
             top: 10, right: 0, left: 0, bottom: 0,
@@ -24,7 +25,7 @@ class WinningRateChart extends PureComponent {
           <PolarAngleAxis dataKey="gamename"/>
           <PolarRadiusAxis />
           <Tooltip />
-          <Label dataKey = "gamename" style = {{color: "white"}}/>
+          <Label dataKey = "gamename" className = "font-white" />
           <Radar dataKey={this.dateKey} stroke="#1F263B" fill={this.fillColor} fillOpacity={0.6} />
         </RadarChart>
       </ResponsiveContainer>

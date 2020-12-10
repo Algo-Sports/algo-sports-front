@@ -33,7 +33,9 @@ const columns = [
     dataIndex: "user_cnt",
     width: '10%',
     render: (count, row) => (
-      <Link to={"/game/user/" + row.id} style={{ color: "#7095FF", textDecoration: "underline" }}>
+      <Link 
+        to={"/game/user/" + row.id}
+        className = "font-light-blue text-underline">
         {count}
       </Link>
     )
@@ -45,7 +47,7 @@ const columns = [
     render: id => (
       <Link
         to={'/game/'+ id}
-        style={{ color: "#FF7596", textDecoration: "underline" }}>
+        className = "text-underline font-light-red">
         Join Game
       </Link >
     )
@@ -83,8 +85,8 @@ const notLoggedInColums = [
     dataIndex: "user_cnt",
     width: '10%',
     render: (count, row) => (
-      <Link to={"/game/user/" + row.id} style={{ color: "#7095FF", textDecoration: "underline" }}>
-        {count}
+      <Link to={"/game/user/" + row.id} className = "font-light-blue text-underline">
+      {count}
       </Link>
     )
   },
@@ -106,7 +108,9 @@ class OnGoingGameTable extends Component {
     this.category = this.props.category ? this.props.category : "general";
 
     return (
-      <div style={{ backgroundColor: "#1F263B", boxShadow: "3px 3px 10px #000000", margin: "50px 0 50px 0", padding: "20px" }}>
+      <div 
+        className = "dark-bg padding-20"
+        style={{ boxShadow: "3px 3px 10px #000000", margin: "50px 0 50px 0" }}>
         <h2>
           Ongoing Game
         </h2>

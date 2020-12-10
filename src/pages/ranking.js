@@ -11,7 +11,8 @@ class Ranking extends Component {
     return (
       <BaseLayout>
         <Banner title="Ranking" subtitle="where are you?" message="Good Luck! & High Score!" />
-        <Row style = {{padding : 10, marginTop: 30}}>
+        <Row
+          className = "padding-10 margin-top-30" >
           <Col lg = {{span: 2}}/>
           <Col lg = {{span: 20}} className = "outer-card-layout">
             <RankingTable/>

@@ -8,10 +8,11 @@ class GameDescription extends Component {
     const { game } = this.props;
     return (
 
-      <Scrollbars 
-        style={{ height: "100%", minHeight: "300px"}}
+      <Scrollbars
+        className = "height-100" 
+        style={{ minHeight: "300px"}}
       >
-        <div className={"game-description-container"}>
+        <div className="game-description-container">
           <h2>
             {game.game_name}
           </h2>

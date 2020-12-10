@@ -14,12 +14,13 @@ class RankGameList extends Component {
   }
 
   render() {
+    const {loggedIn} = this.props;
     return (
       <GameListLayout title="Rank Game" subTitle="Is it rated?" >
         <Row gutter={[8, 0]}>
           <Col lg={{ span: 2 }} />
           <Col lg={{ span: 20 }}>
-            <OnGoingGameTable category="rank" data = {this.onGoingnGameData}  />
+            <OnGoingGameTable category="rank" data = {this.onGoingnGameData} loggedIn = {loggedIn}/>
           </Col>
           <Col lg={{ span: 2 }} />
         </Row>

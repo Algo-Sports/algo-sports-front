@@ -5,7 +5,7 @@ import 'react-activity/dist/react-activity.css';
 class ListLoader extends Component {
   render() {
     return (
-      <div className="min-height-30 padding-40" style={{ margin: "auto", textAlign: "center"}}>
+      <div className="min-height-30 padding-40 margin-auto text-align-center">
         <Bounce size={50} />
       </div>
     )

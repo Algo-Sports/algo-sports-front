@@ -13,6 +13,12 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "OpenSans-Bold";
+  font-weight: 700;
+  src: url("../styles/fonts/Open_Sans/OpenSans-Bold.ttf")
+}
+
 html,
 body {
   padding: 0;
@@ -20,6 +26,10 @@ body {
   font-family: 'Bungee', 'Recipekorea', cursive;
   background: #2D3247;
   min-height: 100%;
+}
+
+.font-content {
+  font-family: 'OpenSans-Bold', 'Bungee', 'Recipekorea', cursive;
 }
 
 a {
@@ -101,12 +111,33 @@ canvas.game-canvas{
   height: 90%;
 }
 
+.height-px-600 {
+  height: 600px;
+}
+
+.width-90 {
+  width: 90%;
+}
+
+.width-99 {
+  width: 99%;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+
 .min-height-30 {
   min-height: 30%;
 }
 
 .min-height-50 {
   min-height: 50%;
+}
+
+.min-height-90 {
+  min-height: 90%;
 }
 
 .padding-5 {
@@ -129,6 +160,67 @@ canvas.game-canvas{
   padding: 40px
 }
 
+.margin-auto {
+  margin: auto;
+}
+
+.margin-top-30 {
+  margin-top: 30px;  
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.font-13 {
+  font-size: 13px;
+}
+
+.font-15 {
+  font-size: 15px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.font-25 {
+  font-size: 25px;
+}
+
+.font-30 {
+  font-size: 30px;
+}
+
+.font-60 {
+  font-size: 60px;
+}
+
+.font-100 {
+  font-size: 100px;
+}
+
+.line-height-20 {
+  line-height: 20px;
+}
+
+.line-height-25 {
+  line-height: 25px;
+}
+
+.line-height-30 {
+  line-height: 30px;
+}
+
+.line-height-60 {
+  line-height: 60px;
+}
+
+
 div[role=alert] {
   color: rgb(255, 117, 150);
 }
@@ -141,4 +233,8 @@ div[role=alert] {
 .react-pdf__Page__textContent {
   width: 100% !important;
   height: auto !important;
+}
+
+.radarchart .recharts-layer text.recharts-polar-angle-axis-tick-value > tspan {
+  fill: rgb(177, 173, 204);
 }

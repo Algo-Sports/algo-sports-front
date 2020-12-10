@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import './styles/table.css';
+import './styles/theme.css';
 import './styles/tab.css';
 import './styles/gameDetail.css';
 

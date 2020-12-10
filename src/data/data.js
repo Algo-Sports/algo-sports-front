@@ -123,3 +123,52 @@ export const rankingData = [
         "score" : 900,
     },
 ]
+
+
+export const awradList = [
+    {
+        id : 1,
+        title: "베타 테스터",
+        award: true,
+    },
+    {
+        id : 2,
+        title: "게임 10개 이상 참가하기",
+        award: false,
+    },
+    {
+        id: 3,
+        title: "게임 15개 이상 참가하기",
+        award: false,
+    },
+    {
+        id: 4,
+        title: "게임 20개 이상 참가하기",
+        award: false,
+    },
+    {
+        id: 5,
+        title: "게임 30개 이상 참가하기",
+        award: false,
+    },
+    {
+        id: 6,
+        title: "게임 50개 이상 참가하기",
+        award: false,
+    },
+    {
+        id: 7,
+        title: "게임 100개 이상 참가하기",
+        award: false,
+    },
+    {
+        id: 8,
+        title: "TOP 10",
+        award: false,
+    },
+    {
+        id: 8,
+        title: "TOP 100",
+        award: false,
+    }
+]
