@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BaseLayout from '../layouts/baseLayout';
 import Banner from '../components/banner';
-import PostCard from '../components/postCard';
+import {PostCard} from '../components/postCard';
 import ListLoader from '../components/listLoader';
 import {BASE_API_URL} from '../_constants/api.constants';
 

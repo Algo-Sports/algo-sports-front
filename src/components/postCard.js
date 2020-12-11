@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { CommentOutlined } from '@ant-design/icons';
 import CardLayout from '../layouts/cardLayout';
 import {Comment} from './comment';
+import { connect } from 'react-redux';
+import CommentInput from '../forms/commentInput';
 
 class PostCard extends Component {
   constructor(props) {
     super(props);
-    this.data = this.props.data;
     this.comments = this.props.comments || [];
   }
 
@@ -27,6 +28,7 @@ class PostCard extends Component {
   }
 
   render() {
+    const {user, loggedIn, data} = this.props;
     const commentList = this.makeCommentList(this.comments, false);
 
     return (
@@ -34,15 +36,15 @@ class PostCard extends Component {
         <div className = "padding-20">
           <h1
             className = "font-light-red font-25 line-height-25">
-            {this.data.title}
+            {data.title}
           </h1>
           <h3
             className = "font-light-dark-blue font-15 line-height-20">
-            by {this.data.user.username}, {this.data.created_at}
+            by {data.user.username}, {data.created_at}
           </h3>
           <p
             className = "font-white font-content">
-            {this.data.content}
+            {data.content}
           </p>
 
           <CardLayout backgroundColor={"#2C3450"} boxShadow={"0px 3px 2px #1B233A"}>
@@ -53,6 +55,7 @@ class PostCard extends Component {
             </h2>
             <hr/>
             {commentList}
+            {loggedIn?<CommentInput post_id = {data.id} user = {user}/>:null}
 
           </CardLayout>
         </div>
@@ -62,4 +65,15 @@ class PostCard extends Component {
 }
 
 
-export default PostCard;
+
+function mapState(state) {
+  const { authentication } = state;
+  const { loggedIn, user } = authentication;
+  return { loggedIn, user };
+}
+
+const actionCreators = {
+}
+
+const connectedPostCard = connect(mapState, actionCreators)(PostCard);
+export { connectedPostCard as PostCard };
