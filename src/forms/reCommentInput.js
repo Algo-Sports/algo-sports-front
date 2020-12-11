@@ -35,7 +35,8 @@ class ReCommentInput extends Component {
   }
 
   patchReComment = async (id, content) => {
-    const requestOptions = {
+
+    var requestOptions = {
       method: 'POST',
       headers: authHeader(),
       body: JSON.stringify({
@@ -43,28 +44,12 @@ class ReCommentInput extends Component {
       })
     }
     var ret = fetch(`${BASE_API_URL}/comments/${id}/add_recomment/`, requestOptions)
-      .then(handleTokenResponse)
-      .then(
-        function (res) {
-          if (res === "token_refreshed") {
-            console.log("refresh 성공")
-            let requestReOptions = {
-              method: 'POST',
-              headers: authHeader(),
-              body: JSON.stringify({
-                "content": content
-              })
-            }
-            console.log(requestReOptions);
-            return fetch(`${BASE_API_URL}/comments/${id}/add_recomment/`, requestReOptions);
-          }
-        }
-      )
+      .then(res => handleTokenResponse(res, `${BASE_API_URL}/comments/${id}/add_recomment/`, requestOptions))
       .catch(function (e) {
         console.log(e);
       });
     // eslint-disable-next-line no-restricted-globals
-    location.reload();  
+    location.reload(); 
   }
 
   render() {

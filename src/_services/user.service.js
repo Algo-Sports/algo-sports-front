@@ -6,7 +6,6 @@ export const userService = {
     signout,
     signup,
     getById,
-    refresh_token,
 };
 
 function signin( email, password) {
@@ -48,23 +47,6 @@ function signup(username, email, password1, password2) {
     };
 
     return fetch(`${BASE_API_URL}/auth/registration/`, requestOptions).then(handleResponse);
-}
-
-function refresh_token(refresh_token) {
-    const requestOptions = {
-        method : 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body : JSON.stringify({"refresh": refresh_token})
-    }
-
-    return fetch(`${BASE_API_URL}/auth/token/refresh/`, requestOptions).then(handleResponse)
-    .then(access => {
-        console.log(access);
-        let user = JSON.parse(localStorage.getItem("user"))
-        user.access_token = access.access;
-        localStorage.setItem('user', JSON.stringify(user));
-        return user;
-    })
 }
 
 // function getAll() {

@@ -35,7 +35,7 @@ class Comment extends Component {
 
   render() {
     
-    const {loggedIn, user, comment} = this.props;
+    const {loggedIn, user, comment, isReComment} = this.props;
     return (
       <div>
         <span 
@@ -54,7 +54,7 @@ class Comment extends Component {
           className = "font-white font-15 font-content">
           {comment.content}
           {
-            loggedIn?
+            loggedIn && !isReComment?
             <a 
               className = "font-light-blue"
               style ={{paddingLeft: 5}} onClick = {this.onhandleReComment}>
