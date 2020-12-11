@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BaseLayout from '../layouts/baseLayout';
 import Banner from '../components/banner';
-import PostCard from '../components/postCard';
+import {PostCard} from '../components/postCard';
 import ListLoader from '../components/listLoader';
 import {BASE_API_URL} from '../_constants/api.constants';
 
@@ -11,7 +11,6 @@ import axios from 'axios';
 
 class PostList extends Component {
   state = {
-    token: "c038fe1d07786596374d9769236e84c07f95d338",
     postDataLoading: true,
     recentPostDataLoading: true,
     postData: [],
@@ -34,9 +33,6 @@ class PostList extends Component {
       const response = await axios({
         method: 'get',
         url: BASE_API_URL + "/posts/",
-        headers: {
-          Authorization: "Token " + this.state.token
-        }
       })
       this.setState({
         postData: response.data.results
@@ -54,9 +50,6 @@ class PostList extends Component {
       const response = await axios({
         method: 'get',
         url: BASE_API_URL + "/comments/",
-        headers: {
-          Authorization: "Token " + this.state.token
-        }
       })
       this.setState({
         commentData: response.data.results,

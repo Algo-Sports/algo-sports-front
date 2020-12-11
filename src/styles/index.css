@@ -115,6 +115,14 @@ canvas.game-canvas{
   height: 600px;
 }
 
+.width-10 {
+  width: 10%;
+}
+
+.width-80 {
+  width: 80%;
+}
+
 .width-90 {
   width: 90%;
 }
@@ -162,6 +170,10 @@ canvas.game-canvas{
 
 .margin-auto {
   margin: auto;
+}
+
+.margin-10 {
+  margin: 10px;
 }
 
 .margin-top-30 {

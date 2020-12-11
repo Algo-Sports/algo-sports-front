@@ -9,6 +9,8 @@ export const userService = {
 };
 
 function signin( email, password) {
+    localStorage.removeItem('user');
+
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -18,8 +20,6 @@ function signin( email, password) {
     return fetch(`${BASE_API_URL}/auth/login/`, requestOptions)
         .then(handleResponse)
         .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            console.log(user);
             localStorage.setItem('user', JSON.stringify(user));
             return user;
         })
