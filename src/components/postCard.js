@@ -14,7 +14,7 @@ class PostCard extends Component {
   makeCommentList(comments, isReComment) {
     return comments.map(
       comment => (
-        <div key = {comment.id}> 
+        <div className = "padding-5" key = {comment.id}> 
           <Comment comment = {comment} isReComment = {isReComment}/>
           
           <div className = "reCommentBox" style = {{paddingLeft: 20}}>
@@ -22,6 +22,9 @@ class PostCard extends Component {
               comment.recomments ? this.makeCommentList(comment.recomments, true) : null
             }
           </div>
+          {
+            isReComment ? null : <hr/>
+          }
         </div>
       )
     );
@@ -54,7 +57,9 @@ class PostCard extends Component {
               Comment
             </h2>
             <hr/>
-            {commentList}
+            <div className = "padding-10">
+              {commentList}
+            </div>
             {loggedIn?<CommentInput post_id = {data.id} user = {user}/>:null}
 
           </CardLayout>
