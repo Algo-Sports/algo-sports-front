@@ -47,11 +47,15 @@ class CommentInput extends Component {
     }
     var ret = fetch(`${BASE_API_URL}/posts/${id}/add_comment/`, requestOptions)
       .then(res => handleTokenResponse(res, `${BASE_API_URL}/posts/${id}/add_comment/`, requestOptions))
+      .then(
+        function(res) {
+          // eslint-disable-next-line no-restricted-globals
+          location.reload();
+        }
+      )
       .catch(function (e) {
         console.log(e);
       });
-    // eslint-disable-next-line no-restricted-globals
-    location.reload(); 
   }
 
   render() {
