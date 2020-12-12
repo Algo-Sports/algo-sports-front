@@ -5,28 +5,43 @@ import { Table } from 'antd';
 const columns = [
   {
     title: "Game Name",
-    dataIndex: "name",
+    dataIndex: ["gameinfo", "title"],
     width: '15%',
-  },
-  {
-    title: "Creator",
-    dataIndex: "creator",
-    width: '10%',
+    render: (name) => (
+      <span style = {{lineHeight: "1rem"}}>
+        {name}
+      </span>
+    )
   },
   {
     title: "Description",
-    dataIndex: "description",
-    width: '25%',
+    dataIndex: ["gameinfo", "description"],
+    width: '35%',
+    render: (gameinfo) => (
+      <span style = {{lineHeight: "1rem"}}>
+        {gameinfo}
+      </span>
+    )
   },
   {
     title: "start",
-    dataIndex: "start",
+    dataIndex: ["gameinfo", "created_at"],
     width: '15%',
+    render: (start) => (
+      <span style = {{lineHeight: "1rem"}}>
+        {start}
+      </span>
+    )
   },
   {
     title: "end",
     dataIndex: "end",
     width: '15%',
+    render: (end) => (
+      <span>
+        {end ? end : "NOT ENDED"}
+      </span>
+    )
   },
   {
     title: "",
@@ -57,28 +72,28 @@ const columns = [
 const notLoggedInColums = [
   {
     title: "Game Name",
-    dataIndex: "name",
+    dataIndex: ["gameinfo", "title"],
     width: '15%',
   },
   {
-    title: "Creator",
-    dataIndex: "creator",
-    width: '10%',
-  },
-  {
     title: "Description",
-    dataIndex: "description",
-    width: '25%',
+    dataIndex: ["gameinfo", "description"],
+    width: '35%',
   },
   {
     title: "start",
-    dataIndex: "start",
+    dataIndex: ["gameinfo", "created_at"],
     width: '15%',
   },
   {
     title: "end",
     dataIndex: "end",
     width: '15%',
+    render: (end, row) => (
+      <p>
+        {end ? end : "NOT ENDED"}
+      </p>
+    )
   },
   {
     title: "",
