@@ -10,6 +10,7 @@ import { authHeader, handleTokenResponse } from '../_helpers';
 
 class RankGameList extends Component {
   state = {
+    game_room_loading: true, 
     game_room_list: [],
   }
 
@@ -24,7 +25,10 @@ class RankGameList extends Component {
   }
 
   patchReComment = async () => {
-
+    this.setState({
+      ...this.state,
+      game_room_loading: true,
+    })
     var requestOptions = {
       method: 'GET',
       headers: authHeader(),
@@ -35,6 +39,7 @@ class RankGameList extends Component {
     .then(res => {
       this.setState({
         ...this.state,
+        game_room_loading: false,
         game_room_list : res
       })
       return res;

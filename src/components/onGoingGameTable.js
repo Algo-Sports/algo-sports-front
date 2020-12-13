@@ -114,12 +114,10 @@ class OnGoingGameTable extends Component {
       current: 1,
       pageSize: 10,
     },
-    loading: false,
   };
 
   render() {
-    const {data, loggedIn} = this.props;
-    const { loading } = this.state;
+    const {data, loggedIn, loading} = this.props;
     this.category = this.props.category ? this.props.category : "general";
 
     return (
