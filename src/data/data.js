@@ -1,22 +1,24 @@
 export const onGoingGame = [
     {
-        id : 4,
-        name : "레이저 게임(2)",
-        creator : "singun11",
-        description : "가장 많이 공을 맞춰보세요!",
-        start : "2020.11.11 23:35",
-        end : "2020.12.12 01:35",
-        user_cnt: 1100,
+        id : 1,
+        gameinfo: {
+            title: "레이저 게임(2)",
+            description : "가장 많이 공을 맞춰보세요!",
+            created_at : "2020.11.11 23:35",
+            end : "2020.12.12 01:35",
+        },
+        total_participants: 1100,
         users : [],
     },
     {
-        id : 5,
-        name: "땅따먹기 게임(3)",
-        creator : "singun11",
-        description : "도형을 배치하고, 제일 많은 영역을 차지하게요!",
-        start : "2020.11.11 23:35",
-        end : "2020.12.12 01:35",
-        user_cnt: 900,
+        id : 2,
+        gameinfo: {
+            title: "땅따먹기 게임(3)",
+            description : "도형을 배치하고, 제일 많은 영역을 차지하게요!",
+            created_at : "2020.11.11 23:35",
+            end : "2020.12.12 01:35",
+        },
+        total_participants: 900,
         users : [],
     },
 ]
@@ -24,31 +26,25 @@ export const onGoingGame = [
 export const pastGame = [
     {
         id : 1,
-        name : "레이저 게임(1)",
-        creator : "singun11",
-        description : "가장 많이 공을 맞춰보세요!",
-        "start": "2020.11.11 23:35",
-        "end": "2020.11.12 01:35",
-        user_cnt: 1100,
+        gameinfo: {
+            title: "레이저 게임(2)",
+            description : "가장 많이 공을 맞춰보세요!",
+            created_at : "2020.11.11 23:35",
+            end : "2020.12.1 01:35",
+        },
+        total_participants: 1100,
+        users : [],
     },
     {
         id : 2,
-        name: "땅따먹기 게임(1)",
-        creator : "singun11",
-        description : "도형을 배치하고, 제일 많은 영역을 차지하게요!",
-        "start": "2020.11.11 23:35",
-        "end": "2020.11.12 01:35",
-        user_cnt: 1100,
-    },
-    
-    {
-        id : 3,
-        name: "땅따먹기 게임(2)",
-        creator : "singun11",
-        description : "도형을 배치하고, 제일 많은 영역을 차지하게요!",
-        "start": "2020.11.11 23:35",
-        "end": "2020.11.12 01:35",
-        user_cnt: 1100,
+        gameinfo: {
+            title: "땅따먹기 게임(3)",
+            description : "도형을 배치하고, 제일 많은 영역을 차지하게요!",
+            created_at : "2020.11.11 23:35",
+            end : "2020.12.1 01:35",
+        },
+        total_participants: 900,
+        users : [],
     },
 ]
 
