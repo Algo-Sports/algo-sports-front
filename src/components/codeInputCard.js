@@ -59,7 +59,7 @@ class CodeInputCard extends Component {
                   <button
                     className = "width-100"
                     style={{ backgroundColor: "#465580", color: "white", border: "none", height: "50px", fontSize: "1.3rem" }}
-                    onClick={this.props.changeDescription}
+                    onClick={this.props.submitCode}
                   >
                     Submit Code!
                   </button>
