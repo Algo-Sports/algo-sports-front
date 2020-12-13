@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { Table } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 const initData = [{
   id: 0,
@@ -55,13 +56,16 @@ const columns = [
   },
   {
     title: "",
-    dataIndex: "user_cnt",
+    dataIndex: "total_participants",
     width: '10%',
-    render: (count, row) => (
+    render: (total_participants, row) => (
       <Link
         to={"/game/user/" + row.id}
-        className="font-light-blue text-underline">
-        {count}
+        className="font-light-blue">
+        <UserOutlined style = {{fontSize: "1rem"}}/> &ensp;
+        <span className = "text-underline" style={{ lineHeight: "1rem" }}>
+          {total_participants}
+        </span>
       </Link>
     )
   },
@@ -107,11 +111,11 @@ const notLoggedInColums = [
   },
   {
     title: "",
-    dataIndex: "user_cnt",
+    dataIndex: "total_participants",
     width: '10%',
-    render: (count, row) => (
+    render: (total_participants, row) => (
       <Link to={"/game/user/" + row.id} className="font-light-blue text-underline">
-        {count}
+        {total_participants}
       </Link>
     )
   },
