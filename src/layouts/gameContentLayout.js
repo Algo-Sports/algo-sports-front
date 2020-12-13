@@ -33,7 +33,7 @@ class GameContentLayout extends Component {
   }
 
   render() {
-    const {game, ranking, gameResult} = this.props;
+    const {game, ranking, gameResult, loading} = this.props;
     return (
       <>
         <nav className = "game-detail-nav">
@@ -48,7 +48,7 @@ class GameContentLayout extends Component {
               <Col
                 lg={{ span: 12 }} md={{ span: 12 }} sm={{ span: 22 }} xs={{ span: 22 }}
                 className = "outer-card-layout">
-                <GameDetail game = {game} ranking = {ranking} gameResult = {gameResult}/>
+                <GameDetail game = {game} ranking = {ranking} gameResult = {gameResult} loading = {loading}/>
               </Col>
               <Col lg={{ span: 0 }} md={{ span: 0 }} sm={{ span: 1 }} xs={{ span: 1 }} />
               <Col

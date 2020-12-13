@@ -5,7 +5,7 @@ import PdfViewer from './pdfViewer'
 class GameDescription extends Component {
 
   render() {
-    const { game } = this.props;
+    const { game, loading } = this.props;
     return (
 
       <Scrollbars
@@ -14,11 +14,11 @@ class GameDescription extends Component {
       >
         <div className="game-description-container">
           <h2>
-            {game.gameinfo.title}
+            {loading ? "" : game.gameinfo.title}
           </h2>
           <hr />
-          {game.gameinfo.description}
-          <PdfViewer filename={game.game_content} />
+          {loading ? "" : game.gameinfo.description}
+          <PdfViewer filename={loading ? "" : game.game_content} />
         </div>
       </Scrollbars>
     )

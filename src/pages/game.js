@@ -85,10 +85,10 @@ class Game extends Component {
 
   render() {
     const {loggedIn} = this.props;
-    const {rankingList, game} = this.state;
+    const {rankingList, game, loading} = this.state;
 
     return (
-      loggedIn ? <GameContentLayout game= {game} ranking = {rankingList}/>:<Redirect to = "/signin"/>
+      loggedIn ? <GameContentLayout loading = {loading} game= {game} ranking = {rankingList}/>:<Redirect to = "/signin"/>
     )
   }
 }

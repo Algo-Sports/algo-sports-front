@@ -7,11 +7,11 @@ const { TabPane } = Tabs;
 
 class GameDetail extends Component {
   render() {
-    const {game, ranking, gameResult} = this.props;
+    const {game, ranking, gameResult, loading} = this.props;
     return (
       <Tabs type="card" defaultActiveKey="1" className="gameDetailTab height-100">
         <TabPane tab="Description" key="1" className = "height-100" calssName = "padding-10">
-          <GameDescription game={game} />
+          <GameDescription game={game} loading = {loading}/>
         </TabPane>
         <TabPane tab="Ranking" key="2" className = "height-100" calssName = "padding-10">
           <GameRanking ranking = {ranking}/>
