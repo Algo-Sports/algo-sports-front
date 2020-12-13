@@ -14,9 +14,10 @@ class GameDescription extends Component {
       >
         <div className="game-description-container">
           <h2>
-            {game.game_name}
+            {game.gameinfo.title}
           </h2>
           <hr />
+          {game.gameinfo.description}
           <PdfViewer filename={game.game_content} />
         </div>
       </Scrollbars>
