@@ -12,16 +12,28 @@ class RankGameList extends Component {
   state = {
     game_room_loading: true, 
     game_room_list: [],
+    hasError: false,
   }
 
   constructor(props) {
     super(props);
     this.onGoingnGameData = onGoingGame;
     this.pastGameData = pastGame;
+    this.patchGameList = this.patchGameList.bind(this);
   }
 
   componentDidMount() {
     this.patchGameList();
+  }
+
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    // You can also log the error to an error reporting service
+    console.log(error, errorInfo);
   }
 
   patchGameList = async () => {
@@ -29,25 +41,39 @@ class RankGameList extends Component {
       ...this.state,
       game_room_loading: true,
     })
+
     var requestOptions = {
       method: 'GET',
       headers: authHeader(),
     }
 
-    var ret = fetch(`${BASE_API_URL}/games/room/`, requestOptions)
-    .then(res => handleTokenResponse(res, `${BASE_API_URL}/games/room/`, requestOptions))
-    .then(res => {
+    try {
+      let response = await fetch(`${BASE_API_URL}/games/room/`, requestOptions);
+      response = await handleTokenResponse(response, `${BASE_API_URL}/games/room/`, requestOptions)
       this.setState({
         ...this.state,
+        game_room_list : response,
         game_room_loading: false,
-        game_room_list : res
       })
-      return res;
-    })
-    .catch(e => {
-      console.log(e);
-      return e;
-    });
+      console.log(response);
+    }
+    catch(error) {
+      console.log(error);
+      if(error === "403") {
+        let response = await handleTokenResponse(response, `${BASE_API_URL}/games/room/`, requestOptions)
+        this.setState({
+          ...this.state,
+          game_room_list : response,
+          game_room_loading: false,
+        })
+      } 
+      this.setState({
+        ...this.state,
+        game_room_list: [],
+        game_room_loading: true, 
+      })
+    }
+
   }
 
 

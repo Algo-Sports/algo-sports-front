@@ -6,15 +6,14 @@ export function authHeader() {
     let user = JSON.parse(localStorage.getItem('user'));
 
     if (user && user.access_token) {
-        return { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + user.access_token};
+        return { 'Content-Type': 'text/plain', 'Authorization': 'Bearer ' + user.access_token};
     } else {
-        return { 'Content-Type': 'application/json', 'Authorization': 'Bearer '};
+        return { 'Content-Type': 'text/plain', 'Authorization': 'Bearer '};
     }
 }
 
 export function handleTokenResponse(response, URI, options) {
     return response.text().then(async function(text) {
-        console.log(response);
         const data = text && JSON.parse(text);
         if (!response.ok) {
             if (response.status === 401) {
@@ -34,24 +33,33 @@ export function handleTokenResponse(response, URI, options) {
                         body : JSON.stringify({"refresh": refresh_token})
                     }
                 
-                    return fetch(`${BASE_API_URL}/auth/token/refresh/`, requestOptions).then(handleResponse)
+                    return await fetch(`${BASE_API_URL}/auth/token/refresh/`, requestOptions).then(handleResponse)
                     .then(access => {
                         let user = JSON.parse(localStorage.getItem("user"))
                         user.access_token = access.access;
                         localStorage.setItem('user', JSON.stringify(user));
                     }).then(
-                        function() {
+                        async function() {
                             options.headers = authHeader();
-                            return fetch(URI, options)
-                        }
-                    ).then(
-                        res => {
-                            return res;
+                            const response = await fetch(URI, options)
+                            
+                            const data = await response.text().then(
+                                function(text) {
+                                    const data = text && JSON.parse(text);
+                                    if(response.ok) {
+                                        console.log(data);
+                                        return data;
+                                    }
+                                    else return [];
+                                }
+                            )
+
+                            return data;
                         }
                     )
                     .catch(
                         error => {
-                            return error;
+                            return [];
                         }
                     )
                 }

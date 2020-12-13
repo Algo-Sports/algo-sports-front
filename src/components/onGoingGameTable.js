@@ -2,13 +2,23 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import { Table } from 'antd';
 
+const initData = [{
+  id: 0,
+  gameinfo: {
+    title: "",
+    description: "",
+    created_at: "",
+    end: "",
+  }
+}]
+
 const columns = [
   {
     title: "Game Name",
     dataIndex: ["gameinfo", "title"],
     width: '15%',
     render: (name) => (
-      <span style = {{lineHeight: "1rem"}}>
+      <span style={{ lineHeight: "1rem" }}>
         {name}
       </span>
     )
@@ -18,7 +28,7 @@ const columns = [
     dataIndex: ["gameinfo", "description"],
     width: '35%',
     render: (gameinfo) => (
-      <span style = {{lineHeight: "1rem"}}>
+      <span style={{ lineHeight: "1rem" }}>
         {gameinfo}
       </span>
     )
@@ -28,7 +38,7 @@ const columns = [
     dataIndex: ["gameinfo", "created_at"],
     width: '15%',
     render: (start) => (
-      <span style = {{lineHeight: "1rem"}}>
+      <span style={{ lineHeight: "1rem" }}>
         {start}
       </span>
     )
@@ -48,9 +58,9 @@ const columns = [
     dataIndex: "user_cnt",
     width: '10%',
     render: (count, row) => (
-      <Link 
+      <Link
         to={"/game/user/" + row.id}
-        className = "font-light-blue text-underline">
+        className="font-light-blue text-underline">
         {count}
       </Link>
     )
@@ -61,8 +71,8 @@ const columns = [
     width: '10%',
     render: id => (
       <Link
-        to={'/game/'+ id}
-        className = "text-underline font-light-red">
+        to={'/game/' + id}
+        className="text-underline font-light-red">
         Join Game
       </Link >
     )
@@ -100,8 +110,8 @@ const notLoggedInColums = [
     dataIndex: "user_cnt",
     width: '10%',
     render: (count, row) => (
-      <Link to={"/game/user/" + row.id} className = "font-light-blue text-underline">
-      {count}
+      <Link to={"/game/user/" + row.id} className="font-light-blue text-underline">
+        {count}
       </Link>
     )
   },
@@ -109,7 +119,15 @@ const notLoggedInColums = [
 
 class OnGoingGameTable extends Component {
   state = {
-    data: [],
+    data: [{
+      id: 0,
+      gameinfo: {
+        title: "",
+        description: "",
+        created_at: "",
+        end: "",
+      }
+    }],
     pagination: {
       current: 1,
       pageSize: 10,
@@ -117,12 +135,13 @@ class OnGoingGameTable extends Component {
   };
 
   render() {
-    const {data, loggedIn, loading} = this.props;
+    const {loggedIn, loading, data } = this.props;
+    
     this.category = this.props.category ? this.props.category : "general";
 
     return (
-      <div 
-        className = "dark-bg padding-20"
+      <div
+        className="dark-bg padding-20"
         style={{ boxShadow: "3px 3px 10px #000000", margin: "50px 0 50px 0" }}>
         <h2>
           Ongoing Game
@@ -130,7 +149,7 @@ class OnGoingGameTable extends Component {
         <Table
           columns={loggedIn ? columns : notLoggedInColums}
           rowKey={ranking => ranking.username}
-          dataSource={data}
+          dataSource={loading ? initData : data}
           loading={loading}
           onChange={this.handleTableChange}
           showSorterTooltip={false}
