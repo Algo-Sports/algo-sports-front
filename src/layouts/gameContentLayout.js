@@ -9,6 +9,21 @@ import CodeInputCard from '../components/codeInputCard';
 class GameContentLayout extends Component {
   state = {
     code : "",
+    lang : "",
+    langList: [
+      {
+        id: 1,
+        name: "python",
+      },
+      {
+        id: 2,
+        name: "c++",
+      },
+      {
+        id: 3,
+        name: "c", 
+      },
+    ],
   }
 
   constructor(props) {
@@ -29,7 +44,10 @@ class GameContentLayout extends Component {
 
   submitCode() {
     const {code} = this.state;
-    console.log(JSON.stringify({'code': code}))
+    const {game} = this.props;
+
+    console.log(JSON.stringify(game));
+    console.log(JSON.stringify({'code': code}));
   }
 
   render() {
@@ -48,7 +66,7 @@ class GameContentLayout extends Component {
               <Col
                 lg={{ span: 12 }} md={{ span: 12 }} sm={{ span: 22 }} xs={{ span: 22 }}
                 className = "outer-card-layout">
-                <GameDetail game = {game} ranking = {ranking} gameResult = {gameResult} loading = {loading}/>
+                <GameDetail game = {game} ranking = {ranking} gameResult = {gameResult} loading = {loading.game_content}/>
               </Col>
               <Col lg={{ span: 0 }} md={{ span: 0 }} sm={{ span: 1 }} xs={{ span: 1 }} />
               <Col
