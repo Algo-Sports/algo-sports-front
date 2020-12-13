@@ -21,10 +21,10 @@ class RankGameList extends Component {
   }
 
   componentDidMount() {
-    this.patchReComment();
+    this.patchGameList();
   }
 
-  patchReComment = async () => {
+  patchGameList = async () => {
     this.setState({
       ...this.state,
       game_room_loading: true,
@@ -46,6 +46,7 @@ class RankGameList extends Component {
     })
     .catch(e => {
       console.log(e);
+      return e;
     });
   }
 
