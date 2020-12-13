@@ -55,18 +55,8 @@ class RankGameList extends Component {
         game_room_list : response,
         game_room_loading: false,
       })
-      console.log(response);
     }
     catch(error) {
-      console.log(error);
-      if(error === "403") {
-        let response = await handleTokenResponse(response, `${BASE_API_URL}/games/room/`, requestOptions)
-        this.setState({
-          ...this.state,
-          game_room_list : response,
-          game_room_loading: false,
-        })
-      } 
       this.setState({
         ...this.state,
         game_room_list: [],
