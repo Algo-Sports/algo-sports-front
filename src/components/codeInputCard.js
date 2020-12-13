@@ -8,48 +8,45 @@ const { TabPane } = Tabs;
 import { authHeader, handleTokenResponse } from '../_helpers';
 import { BASE_API_URL } from '../_constants';
 
-const options = [
-  {
-    value: 'python', label: 'Python (3.8.1)',
-    language_code: 38,
-  },
-  {
-    value: 'c', label: 'C (GCC 9.2.0)',
-    language_code: 7,
-  },
-  {
-    value: 'cpp', label: 'C++ (GCC 9.2.0)',
-    language_code: 9,
-  }
-]
+
 
 class CodeInputCard extends Component {
-  state = {
-    lang: options[0],
-    parameters: {}
+
+
+  constructor(props) {
+    super(props);
+
+    const { langList } = this.props;
+
+    this.state = {
+      lang: langList[0],
+      parameters: {}
+    }
   }
 
   handleChange = lang => {
-    const newLang = options.find((item) => {
+    const { setLang, langList } = this.props;
+    const newLang = langList.find((item) => {
       return item === lang;
     })
-    this.setState({ ...this.state, lang: newLang });
+    setLang(newLang);
     this.getTemplateCode(newLang);
   }
 
   componentDidMount() {
     console.log("componentDidMount");
     const { lang, parameters } = this.state;
-    console.log(parameters)
+    console.log("lang: ", lang, "\nparameters: ", parameters)
     this.getTemplateCode(lang);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     console.log("getDerivedStateFromProps");
-    if (nextProps.game !== prevState.game) {
-      console.log(nextProps.game.gameversion?.default_setting.parameters ?? {})
+    if (nextProps.game !== prevState.game || nextProps.lang !== prevState.lang) {
+      console.log(nextProps.lang, nextProps.game.gameversion?.default_setting.parameters ?? {})
       return {
         ...prevState,
+        lang: nextProps.lang,
         parameters: nextProps.game.gameversion?.default_setting.parameters ?? {}
       }
     }
@@ -85,8 +82,7 @@ class CodeInputCard extends Component {
 
   render() {
     const { lang } = this.state;
-    const { code, setCode } = this.props;
-
+    const { langList, code, setCode } = this.props;
     // console.log(JSON.stringify(this.props))
 
     return (
@@ -129,8 +125,8 @@ class CodeInputCard extends Component {
                 <Col xs={{ span: 6 }} className="padding-20">
                   <Select
                     name="lang"
-                    defaultValue={options[0]}
-                    options={options}
+                    defaultValue={langList[0]}
+                    options={langList}
                     value={lang}
                     isSearchable={true}
                     onChange={this.handleChange}
