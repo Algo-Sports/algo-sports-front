@@ -1,42 +1,61 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 import { Table } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 const columns = [
   {
     title: "Game Name",
-    dataIndex: "name",
+    dataIndex: ["gameinfo", "title"],
     width: '15%',
-  },
-  {
-    title: "Creator",
-    dataIndex: "creator",
-    width: '10%',
+    render: (name) => (
+      <span style={{ lineHeight: "1rem" }}>
+        {name}
+      </span>
+    )
   },
   {
     title: "Description",
-    dataIndex: "description",
-    width: '25%',
+    dataIndex: ["gameinfo", "description"],
+    width: '35%',
+    render: (gameinfo) => (
+      <span style={{ lineHeight: "1rem" }}>
+        {gameinfo}
+      </span>
+    )
   },
   {
     title: "start",
-    dataIndex: "start",
+    dataIndex: ["gameinfo", "created_at"],
     width: '15%',
+    render: (start) => (
+      <span style={{ lineHeight: "1rem" }}>
+        {start}
+      </span>
+    )
   },
   {
     title: "end",
     dataIndex: "end",
     width: '15%',
+    render: (end) => (
+      <span>
+        {end ? end : "NOT ENDED"}
+      </span>
+    )
   },
   {
     title: "",
-    dataIndex: "user_cnt",
+    dataIndex: "total_participants",
     width: '10%',
-    render: (count, row) => (
-      <Link 
-        to = {"/game/user/"+row.id}
-        className = "font-light-blue text-underline">
-        {count}
+    render: (total_participants, row) => (
+      <Link
+        to={"/game/user/" + row.id}
+        className="font-light-blue">
+        <UserOutlined style = {{fontSize: "1rem"}}/> &ensp;
+        <span className = "text-underline" style={{ lineHeight: "1rem" }}>
+          {total_participants}
+        </span>
       </Link>
     )
   },
@@ -74,38 +93,36 @@ class PastGameTable extends Component {
       this.columns = [
         {
           title: "Game Name",
-          dataIndex: "name",
-          width: '20%',
-        },
-        {
-          title: "Creator",
-          dataIndex: "creator",
-          width: '10%',
+          dataIndex: ["gameinfo", "title"],
+          width: '15%',
         },
         {
           title: "Description",
-          dataIndex: "description",
-          width: '30%',
+          dataIndex: ["gameinfo", "description"],
+          width: '35%',
         },
         {
           title: "start",
-          dataIndex: "start",
+          dataIndex: ["gameinfo", "created_at"],
           width: '15%',
         },
         {
           title: "end",
           dataIndex: "end",
           width: '15%',
+          render: (end, row) => (
+            <p>
+              {end ? end : "NOT ENDED"}
+            </p>
+          )
         },
         {
           title: "",
-          dataIndex: "currentUser",
+          dataIndex: "total_participants",
           width: '10%',
-          render: (count, row) => (
-            <Link
-              to = {"/game/user/"+row.id}
-              className = "font-light-blue text-underline">
-              {count}
+          render: (total_participants, row) => (
+            <Link to={"/game/user/" + row.id} className="font-light-blue text-underline">
+              {total_participants}
             </Link>
           )
         },

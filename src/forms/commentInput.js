@@ -2,9 +2,10 @@ import { Button, Input } from 'antd';
 import React, { Component } from 'react'
 import { BASE_API_URL } from '../_constants';
 import { authHeader, handleTokenResponse } from '../_helpers';
+
 const { TextArea } = Input;
 
-class ReCommentInput extends Component {
+class CommentInput extends Component {
   // comment_id
   state = {
     content: "",
@@ -26,13 +27,13 @@ class ReCommentInput extends Component {
 
   handleSubmit() {
     const { content } = this.state;
-    const { comment_id } = this.props;
+    const { post_id } = this.props;
     this.setState({
       ...this.state,
       loading: true,
     })
 
-    this.patchReComment(comment_id, content);
+    this.patchReComment(post_id, content);
   }
 
   patchReComment = async (id, content) => {
@@ -44,27 +45,31 @@ class ReCommentInput extends Component {
         "content": content
       })
     }
-    var ret = fetch(`${BASE_API_URL}/comments/${id}/add_recomment/`, requestOptions)
-      .then(res => handleTokenResponse(res, `${BASE_API_URL}/comments/${id}/add_recomment/`, requestOptions))
+    var ret = fetch(`${BASE_API_URL}/posts/${id}/add_comment/`, requestOptions)
+      .then(res => handleTokenResponse(res, `${BASE_API_URL}/posts/${id}/add_comment/`, requestOptions))
+      .then(
+        function(res) {
+          // eslint-disable-next-line no-restricted-globals
+          location.reload();
+        }
+      )
       .catch(function (e) {
         console.log(e);
       });
-    // eslint-disable-next-line no-restricted-globals
-    location.reload(); 
   }
 
   render() {
     const { content, loading } = this.state;
     const { user } = this.props;
     return (
-      <div className="padding-5">
-        <h4 className="font-white">
+      <div className="padding-20 dark-bg">
+        <h3 className="font-white">
           {user.user.username}
-        </h4>
-        <form>
+        </h3>
+        <form onSubmit = {this.handleSubmit}>
           <TextArea
-            className="width-80 margin-10 font-content"
-            value={content}
+            className="width-90 margin-10 font-content"
+            value={content} 
             onChange={this.handelChange}
           />
           <Button
@@ -81,4 +86,4 @@ class ReCommentInput extends Component {
   }
 }
 
-export default ReCommentInput;
+export default CommentInput;
