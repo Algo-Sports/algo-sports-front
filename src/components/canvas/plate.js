@@ -1,6 +1,4 @@
-import {Point} from './point.js'
 import * as Flatten from '@flatten-js/core'
-
 
 export class Plate{
     constructor(x,y,angle,info){

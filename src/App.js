@@ -1,13 +1,10 @@
 import React , {Component} from 'react';
 import BaseLayout from './layouts/baseLayout'
 import {Main} from './pages/main'
-import { connect } from 'react-redux';
-import { userActions } from './_actions';
 
-class App extends Component {
+export class App extends Component {
   
   render() {
-    const {loggedIn, user} = this.props;
     return (
       <div>
           <BaseLayout>
@@ -18,16 +15,3 @@ class App extends Component {
     )
   }
 }
-
-
-function mapState(state) {
-  const { authentication } = state;
-  const { loggedIn, user } = authentication;
-  return { loggedIn, user };
-}
-
-const actionCreators = {
-}
-
-const connectedApp= connect(mapState, actionCreators)(App);
-export { connectedApp as App };
