@@ -3,11 +3,9 @@ import MonacoEditor from '@uiw/react-monacoeditor';
 import Scrollbars from 'react-custom-scrollbars';
 import { Row, Col, Tabs } from 'antd';
 import Select from 'react-select';
-const { TabPane } = Tabs;
-
 import { authHeader, handleTokenResponse } from '../_helpers';
 import { BASE_API_URL } from '../_constants';
-
+const { TabPane } = Tabs;
 
 
 class CodeInputCard extends Component {
