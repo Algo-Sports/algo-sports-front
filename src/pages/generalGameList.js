@@ -3,12 +3,12 @@ import GameListLayout from '../layouts/gameListLayout'
 import OnGoingGameTable from '../components/onGoingGameTable';
 import { Row, Col } from 'antd';
 import PastGameTable from '../components/pastGameTable';
-import {onGoingGame, pastGame} from '../data/data';
+import {pastGame} from '../data/data';
 
 class GeneralGameList extends Component {
   constructor(props) {
     super(props);
-    this.onGoingGame = onGoingGame;
+    this.onGoingGame = [];
     this.pastGame = pastGame;
   }
 

@@ -34,7 +34,7 @@ class Profile extends Component {
         name: 'Round #129', date: '2020.09.26', score: 3490,
       },
       {
-        name: 'Round #130', date: '2020.19.10', score: 3490,
+        name: 'Round #130', date: '2020.09.10', score: 3490,
       },
     ];
 
