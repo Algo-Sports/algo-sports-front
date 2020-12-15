@@ -1,5 +1,4 @@
 import { TrophyOutlined } from '@ant-design/icons';
-import { render } from '@testing-library/react';
 import { Col, Row } from 'antd';
 import React, { Component } from 'react';
 import Banner from '../components/banner';

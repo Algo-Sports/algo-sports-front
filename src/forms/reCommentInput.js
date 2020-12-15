@@ -44,7 +44,7 @@ class ReCommentInput extends Component {
         "content": content
       })
     }
-    var ret = fetch(`${BASE_API_URL}/comments/${id}/add_recomment/`, requestOptions)
+    fetch(`${BASE_API_URL}/comments/${id}/add_recomment/`, requestOptions)
       .then(res => handleTokenResponse(res, `${BASE_API_URL}/comments/${id}/add_recomment/`, requestOptions))
       .catch(function (e) {
         console.log(e);

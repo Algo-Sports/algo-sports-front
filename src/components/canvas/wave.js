@@ -68,7 +68,7 @@ export class Wave {
         for (let i = 0; i < this.totalPoints; i++) {
             this.points[i].updateP();
             
-            if (i == 0) {
+            if (i === 0) {
                 ctx.lineTo(this.points[i]._point.x, this.points[i]._point.y);
             }
             else {

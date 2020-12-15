@@ -15,6 +15,7 @@ const initData = [{
 
 const columns = [
   {
+    key: "game_name",
     title: "Game Name",
     dataIndex: ["gameinfo", "title"],
     width: '15%',
@@ -25,6 +26,7 @@ const columns = [
     )
   },
   {
+    key: "description",
     title: "Description",
     dataIndex: ["gameinfo", "description"],
     width: '35%',
@@ -35,6 +37,7 @@ const columns = [
     )
   },
   {
+    key: "start",
     title: "start",
     dataIndex: ["gameinfo", "created_at"],
     width: '15%',
@@ -45,6 +48,7 @@ const columns = [
     )
   },
   {
+    key: "end",
     title: "end",
     dataIndex: "end",
     width: '15%',
@@ -55,7 +59,8 @@ const columns = [
     )
   },
   {
-    title: "",
+    key: "participants",
+    title: "participants",
     dataIndex: "total_participants",
     width: '10%',
     render: (total_participants, row) => (
@@ -70,7 +75,8 @@ const columns = [
     )
   },
   {
-    title: "",
+    key: "game_id",
+    title: "JOIN_GAME",
     dataIndex: "id",
     width: '10%',
     render: id => (
@@ -85,21 +91,25 @@ const columns = [
 
 const notLoggedInColums = [
   {
+    key: "game_name",
     title: "Game Name",
     dataIndex: ["gameinfo", "title"],
     width: '15%',
   },
   {
+    key: "description",
     title: "Description",
     dataIndex: ["gameinfo", "description"],
     width: '35%',
   },
   {
+    key: "start",
     title: "start",
     dataIndex: ["gameinfo", "created_at"],
     width: '15%',
   },
   {
+    key: "end",
     title: "end",
     dataIndex: "end",
     width: '15%',
@@ -110,6 +120,7 @@ const notLoggedInColums = [
     )
   },
   {
+    key: "total_participants",
     title: "",
     dataIndex: "total_participants",
     width: '10%',
@@ -124,6 +135,7 @@ const notLoggedInColums = [
 class OnGoingGameTable extends Component {
   state = {
     data: [{
+      key: 0,
       id: 0,
       gameinfo: {
         title: "",
@@ -152,7 +164,7 @@ class OnGoingGameTable extends Component {
         </h2>
         <Table
           columns={loggedIn ? columns : notLoggedInColums}
-          rowKey={ranking => ranking.username}
+          rowKey={game => {return game.gameinfo.title}}
           dataSource={loading ? initData : data}
           loading={loading}
           onChange={this.handleTableChange}
