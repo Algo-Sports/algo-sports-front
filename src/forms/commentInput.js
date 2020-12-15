@@ -45,7 +45,7 @@ class CommentInput extends Component {
         "content": content
       })
     }
-    var ret = fetch(`${BASE_API_URL}/posts/${id}/add_comment/`, requestOptions)
+    fetch(`${BASE_API_URL}/posts/${id}/add_comment/`, requestOptions)
       .then(res => handleTokenResponse(res, `${BASE_API_URL}/posts/${id}/add_comment/`, requestOptions))
       .then(
         function(res) {

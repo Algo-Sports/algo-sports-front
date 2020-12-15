@@ -18,13 +18,13 @@ export class Main extends Component {
     }
     
     setOnGoingGameList() {
-
+        console.log(onGoingGame);
         onGoingGame.forEach(game => {
             this.onGoingGame.push(
                 {
-                    "title": game["name"],
-                    "description": game["description"],
-                    "date": "~ "+game["end"],
+                    "title": game.gameinfo.title,
+                    "description": game.gameinfo.description,
+                    "date": "~ "+game.gameinfo.end,
                 }
             )
         });
@@ -47,10 +47,10 @@ export class Main extends Component {
             <div>
                 <Banner title = "Algo sports" subtitle = "Play algorithm!" message = "Join Game & Compete with people"/>
                 <CardListLayout>
-                    <TableCard tableTitle = "Ongoing Game" data = {this.onGoingGame}/>
-                    <TableCard tableTitle = "Site Information" data = {this.siteInformation}/>
-                    <TableCard tableTitle = "Recent Blog" data = {this.recentBlog}/>
-                    <TableCard tableTitle = "Update Log" data = {this.updateLog}/>
+                    <TableCard key = "ongoing_game_card" tableTitle = "Ongoing Game" data = {this.onGoingGame}/>
+                    <TableCard key = "site_imformation_card"tableTitle = "Site Information" data = {this.siteInformation}/>
+                    <TableCard key = "recent_blog_card"tableTitle = "Recent Blog" data = {this.recentBlog}/>
+                    <TableCard key = "update_log_card"tableTitle = "Update Log" data = {this.updateLog}/>
                 </CardListLayout>
             </div>
         )

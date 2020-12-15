@@ -13,19 +13,16 @@ class GameList extends Component {
         const {loggedIn} = this.props;
         return (
             <BaseLayout>
-                <Tabs type="card" defaultActiveKey="1" centered className = {"gameTabContainer"}>
-                    <TabPane tab="General Game" key="1">
+                <Tabs type="card" defaultActiveKey="1" key = "game_tab_container" centered className = {"gameTabContainer"}>
+                    <TabPane tab="General Game" key="general_game_tab">
                         <GeneralGameList loggedIn = {loggedIn}/>
                     </TabPane>
-                    <TabPane tab="Rank Game" key="2">
+                    <TabPane tab="Rank Game" key="rank_game_tab">
                         <RankGameList loggedIn = {loggedIn}/>
                     </TabPane>
-                    <TabPane tab="Practice" key="3">
+                    <TabPane tab="Practice" key="practice_game_tab">
                         <PracticeGameList loggedIn = {loggedIn}/>
                     </TabPane>
-                    {/* <TabPane tab="Create Game" key="4">
-                        <PracticeGameList/>
-                    </TabPane> */}
                 </Tabs>
             </BaseLayout>
         )

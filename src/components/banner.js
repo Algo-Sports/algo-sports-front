@@ -10,7 +10,7 @@ export default class Banner extends Component {
           <Col lg = {{span: 2}} md = {{span: 1}} sm = {{span: 1}} xs ={{span : 1}}/>
           <Col lg = {{span: 20}}  md = {{span: 22}} sm = {{span: 22}} xs ={{span : 22}} 
             style = {{padding: "75px 0 0 0"}} 
-            lassName = "height-100">
+            className = "height-100">
             <h2 style={{fontSize:30,lineHeight:"30px"}}>
               {this.props.subtitle}
             </h2>

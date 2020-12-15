@@ -166,7 +166,7 @@ class PastGameTable extends Component {
         </h2>
         <Table
           columns={this.columns}
-          rowKey={ranking => ranking.username}
+          rowKey={game => {return game.gameinfo.title}}
           dataSource={data}
           loading={loading}
           onChange={this.handleTableChange}
