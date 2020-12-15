@@ -73,7 +73,6 @@ class GameContentLayout extends Component {
     fetch(`${BASE_API_URL}/codes/user/`, requestOptions)
       .then(res => handleTokenResponse(res, `${BASE_API_URL}/codes/user/`, requestOptions))
       .then(res => {
-        console.log(res);
         this.handleCode("");
         return this.runMatch(res.id, game.id);
       })

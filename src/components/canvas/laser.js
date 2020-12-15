@@ -39,7 +39,7 @@ export class Laser {
             this._P = this._startPoint.clone();
             this._Q = this._startPoint.clone();
             this._v = new Flatten.Vector(this._startPoint, this._endPoint);
-            while((this._v.x != 0 && Math.abs(this._v.x) < 1) || (this._v.y != 0 && Math.abs(this._v.y) < 1)){
+            while((this._v.x !== 0 && Math.abs(this._v.x) < 1) || (this._v.y !== 0 && Math.abs(this._v.y) < 1)){
                 this._v.x *= 100000;
                 this._v.y *= 100000;
             }

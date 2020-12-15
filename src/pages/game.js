@@ -49,6 +49,7 @@ class Game extends Component {
   }
 
   patchMatchList = () => {
+    const gameroom_id = this.props.match.params.game_id;
     this.setState({
       ...this.state,
       loading: {
@@ -60,11 +61,12 @@ class Game extends Component {
     var requestOptions = {
       method: 'GET',
       headers: authHeader(),
-      body: JSON.stringify({ gameroom_id: this.props.match.params.game_id })
     }
 
-    fetch(`${BASE_API_URL}/games/match/`, requestOptions)
-      .then(response => handleTokenResponse(response, `${BASE_API_URL}/games/match/`, requestOptions))
+    fetch(`${BASE_API_URL}/games/match/?gameroom_id=${gameroom_id}`, requestOptions)
+      .then(function (response) {
+        return handleTokenResponse(response, `${BASE_API_URL}/games/match/?gameroom_id=${gameroom_id}`, requestOptions)
+      })
       .then(response => {
         this.setState({
           ...this.state,
@@ -76,6 +78,7 @@ class Game extends Component {
         })
       })
       .catch(error => {
+        console.log(error);
         this.setState({
           ...this.state,
           game_match: [],
@@ -143,10 +146,10 @@ class Game extends Component {
 
   render() {
     const { loggedIn } = this.props;
-    const { rankingList, game, loading, game_match } = this.state;
+    const { rankingList, game, loading, matchList } = this.state;
 
     return (
-      loggedIn ? <GameContentLayout loading={loading} game={game} ranking={rankingList} gameResult = {game_match} patchMatchList={this.patchMatchList} /> : <Redirect to="/signin" />
+      loggedIn ? <GameContentLayout loading={loading} game={game} ranking={rankingList} gameResult={matchList} patchMatchList={this.patchMatchList} /> : <Redirect to="/signin" />
     )
   }
 }
