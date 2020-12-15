@@ -217,6 +217,7 @@ class GameResultTable extends Component {
   }
 
   componentDidMount() {
+    const {patchMatchList, gameResult} = this.props;
     this.setState({
       ...this.state,
       data: this.props.result,
@@ -227,38 +228,36 @@ class GameResultTable extends Component {
         </GameCanvas>
       </CanvasLayout>
     )
+    patchMatchList();
+    console.log(gameResult);
   }
 
   render() {
-    const { data, loading } = this.state;
+    const { gameResult, loading,  } = this.state;
 
 
     const columns = [
       {
         title: '매칭 번호',
-        dataIndex: 'matching_id',
+        dataIndex: 'id',
         sorter: true,
         width: '10%',
         sortDirections: ['descend', 'ascend'],
       },
       {
-        title: 'user1',
-        dataIndex: 'user1',
-        width: '10%',
-      },
-      {
-        title: 'user2',
-        dataIndex: '',
+        title: '상태',
+        dataIndex: 'status',
         width: '10%',
       },
       {
         title: '제출한 코드',
-        dataIndex: '제출한 코드',
+        dataIndex: 'mycode_id',
         width: '10%',
       },
+      
       {
-        title: '결과',
-        dataIndex: 'tie',
+        title: '점수',
+        dataIndex: 'score',
         width: '10%',
       },
       {
@@ -273,7 +272,7 @@ class GameResultTable extends Component {
         <Table
           columns={columns}
           rowKey={ranking => ranking.username}
-          dataSource={data}
+          dataSource={gameResult}
           loading={loading}
           onChange={this.handleTableChange}
           showSorterTooltip={false}
