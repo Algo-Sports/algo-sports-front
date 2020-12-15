@@ -32,13 +32,11 @@ class CodeInputCard extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
     const { setCode } = this.props;
     setCode("오른쪽 아래 버튼을 눌러서 언어를 선택해주세요. \n언어를 바꾸면 기존 작성중이던 코드는 저장되지 않습니다.")
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log("getDerivedStateFromProps");
     if (nextProps.game !== prevState.game || nextProps.lang !== prevState.lang) {
       console.log(nextProps.lang, nextProps.game.gameversion?.default_setting.parameters ?? {})
       return {

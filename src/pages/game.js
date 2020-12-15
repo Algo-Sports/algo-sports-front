@@ -8,9 +8,9 @@ import { BASE_API_URL } from '../_constants';
 class Game extends Component {
   state = {
     loading: {
-      game_content : true,
+      game_content: true,
       game_match: true,
-      game_ranking : true,
+      game_ranking: true,
     },
     game: {
       game_id: 0,
@@ -19,8 +19,8 @@ class Game extends Component {
       game_summary: ""
     },
 
-    matchList : [],
-    
+    matchList: [],
+
     rankingList: [
       {
         key: 1,
@@ -45,55 +45,59 @@ class Game extends Component {
 
   componentDidMount() {
     this.patchGameContent()
+    this.patchMatchList()
   }
 
-  patchMatchList = async (gameroom_id) => {
+  patchMatchList = () => {
+    const gameroom_id = this.props.match.params.game_id;
     this.setState({
       ...this.state,
-      loading : {
-        ...this.state,
-        game_match : true
+      loading: {
+        ...this.state.loading,
+        game_match: true
       }
     })
 
     var requestOptions = {
-      method: 'POST',
+      method: 'GET',
       headers: authHeader(),
-      body: JSON.stringify({gameroom_id: gameroom_id})
     }
 
-    try {
-      let response = await fetch(`${BASE_API_URL}/games/match/`, requestOptions);
-      response = await handleTokenResponse(response, `${BASE_API_URL}/games/match/`, requestOptions)
-      this.setState({
-        ...this.state,
-        matchList : response,
-        loading: {
-          ...this.state.loading,
-          game_match: false,
-        }
+    fetch(`${BASE_API_URL}/games/match/?gameroom_id=${gameroom_id}`, requestOptions)
+      .then(function (response) {
+        return handleTokenResponse(response, `${BASE_API_URL}/games/match/?gameroom_id=${gameroom_id}`, requestOptions)
       })
-    }
-    catch(error) {
-      this.setState({
-        ...this.state,
-        game_match: [],
-        loading: {
-          ...this.state.loading,
-          game_match: true,
-        }
+      .then(response => {
+        this.setState({
+          ...this.state,
+          matchList: response,
+          loading: {
+            ...this.state.loading,
+            game_match: false,
+          }
+        })
       })
-    }
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          ...this.state,
+          game_match: [],
+          loading: {
+            ...this.state.loading,
+            game_match: true,
+          }
+        })
+      })
   }
 
 
   patchGameContent = () => {
     this.setState({
       ...this.state,
-      
-      loading : {
+
+      loading: {
         ...this.state,
-        game_content : true
+        game_content: true
       }
 
     })
@@ -120,8 +124,8 @@ class Game extends Component {
         return res;
       })
       .then(
-        res => async () =>{
-          const gameroom_id  = res.id;  
+        res => async () => {
+          const gameroom_id = res.id;
           this.patchMatchList(gameroom_id);
         }
       )
@@ -142,10 +146,10 @@ class Game extends Component {
 
   render() {
     const { loggedIn } = this.props;
-    const { rankingList, game, loading } = this.state;
+    const { rankingList, game, loading, matchList } = this.state;
 
     return (
-      loggedIn ? <GameContentLayout loading={loading} game={game} ranking={rankingList} /> : <Redirect to="/signin" />
+      loggedIn ? <GameContentLayout loading={loading} game={game} ranking={rankingList} gameResult={matchList} patchMatchList={this.patchMatchList} /> : <Redirect to="/signin" />
     )
   }
 }
