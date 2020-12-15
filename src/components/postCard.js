@@ -46,7 +46,7 @@ class PostCard extends Component {
             by {data.user.username}, {data.created_at}
           </h3>
           <p
-            className = "font-white font-content">
+            className = "font-white font-content" style={{whiteSpace: 'pre-line'}}>
             {data.content}
           </p>
 
