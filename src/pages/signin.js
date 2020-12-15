@@ -108,7 +108,7 @@ class Signin extends Component {
             },
             error: {
               ...this.state.error,
-              password: "알 수 없는 오류가 발생하였습니다."
+              password: "로그인 중 입니다..."
             }
           })
         }
